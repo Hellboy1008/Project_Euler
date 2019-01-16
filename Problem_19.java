@@ -48,7 +48,6 @@ public class Problem_19 {
         System.out.println("The number of sundays that all on the first in the 19th century is: " + answer);
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        // System.out.println(answer);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 
