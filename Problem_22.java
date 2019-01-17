@@ -31,7 +31,7 @@ public class Problem_22 {
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 
-    // Sort file using ArrayList
+    // Sort file using ArrayList and Collections
     private static void sortFile() throws FileNotFoundException {
         Scanner scan = new Scanner(names);
         scan.useDelimiter(",");
