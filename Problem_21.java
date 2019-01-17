@@ -10,7 +10,7 @@ public class Problem_21 {
     public static void main(String[] args) {
         long startTime = System.nanoTime();
         int answer = 0;
-        // find sum of primes
+        // find sum of all factors
         for (int number = 2; number <= 10000; number++) {
             calculateFactorSum(number);
         }
