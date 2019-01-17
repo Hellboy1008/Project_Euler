@@ -12,7 +12,7 @@ public class Problem_15 {
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 
-    public static double factorial(double value) {
+    private static double factorial(double value) {
         if (value == 1) {
             return 1;
         } else {

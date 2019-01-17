@@ -22,7 +22,7 @@ public class Problem_4 {
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 
-    public static boolean checkPalindrome(int product) {
+    private static boolean checkPalindrome(int product) {
         int originalNumber = product;
         int reverse = 0;
 

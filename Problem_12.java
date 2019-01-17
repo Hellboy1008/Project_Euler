@@ -23,7 +23,7 @@ public class Problem_12 {
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 
-    public static int countFactors(int number) {
+    private static int countFactors(int number) {
         int factors = 0;
         for (int counter = 1; counter <= Math.sqrt(number); counter++) {
             if (Math.sqrt(number) <= 250) {

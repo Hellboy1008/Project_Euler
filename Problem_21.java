@@ -22,7 +22,7 @@ public class Problem_21 {
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 
-    public static void calculateFactorSum(int input_number) {
+    private static void calculateFactorSum(int input_number) {
         int factorSum = 0;
         for (int counter = 1; counter <= Math.sqrt(input_number); counter++) {
             if (input_number % counter == 0) {
@@ -35,7 +35,7 @@ public class Problem_21 {
         sumOfAllFactors.add(factorSum);
     }
 
-    public static int sumOfAmicableNumbers(ArrayList allFactorSums) {
+    private static int sumOfAmicableNumbers(ArrayList allFactorSums) {
         int totalSum = 0;
         for (int index = 0; index < allFactorSums.size(); index++) {
             int element = (int) (allFactorSums.get(index));

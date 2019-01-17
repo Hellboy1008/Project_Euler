@@ -20,7 +20,7 @@ public class Problem_7 {
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 
-    public static boolean checkPrime(long check_number) {
+    private static boolean checkPrime(long check_number) {
         for (int counter = 2; counter <= Math.sqrt(check_number); counter++) {
             if (check_number % counter == 0) {
                 return false;

@@ -37,7 +37,7 @@ public class Problem_9 {
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 
-    public static int gcd(int a, int b) {
+    private static int gcd(int a, int b) {
         if (b == 0) {
             return a;
         }
