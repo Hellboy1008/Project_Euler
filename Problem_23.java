@@ -16,7 +16,7 @@ public class Problem_23 {
         for (int number = 2; number < 28123; number++) {
             findAbundantNumbers(number);
         }
-        // Remove sum of abundant numbers from list of all numbers
+        // Make all sum of abundant numbers "true" in the boolean array
         for (int element = 0; element < abundantNumbers.size() - 1; element++) {
             for (int index = element; index < abundantNumbers.size(); index++) {
                 sum = abundantNumbers.get(element) + abundantNumbers.get(index);
@@ -25,7 +25,7 @@ public class Problem_23 {
                 }
             }
         }
-        // Sum of non-abundant numbers
+        // Sum all non-abundant numbers
         for (int index = 0; index < sumOfAbundantNumbers.length; index++) {
             if (sumOfAbundantNumbers[index] == false) {
                 answer += index;
