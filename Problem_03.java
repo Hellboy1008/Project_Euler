@@ -1,22 +1,23 @@
 
 //龍ONE
 
-public class Problem_7 {
+public class Problem_03 {
     public static void main(String[] args) {
 
         long startTime = System.nanoTime();
-        int answer = 2;
-        int counter = 0;
-        // Calculate 100001th prime
-        while (counter != 10000) {
-            answer += 1;
-            if (checkPrime(answer) == true) {
-                counter += 1;
+        long target_number = Long.parseLong("600851475143");
+        // Use prime factorization to find largest prime factor
+        for (int factor = 2; factor < Math.sqrt(target_number); factor++) {
+            if (checkPrime(factor) == true) {
+                if (target_number % factor == 0) {
+                    target_number = target_number / factor;
+                }
             }
         }
+
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println(answer);
+        System.out.println(target_number);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 

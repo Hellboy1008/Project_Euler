@@ -1,7 +1,7 @@
 
 //龍ONE
 
-public class Problem_1 {
+public class Problem_01 {
     public static void main(String[] args) {
 
         long startTime = System.nanoTime();
