@@ -16,7 +16,7 @@ public class Problem_07 {
         }
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println(answer);
+        System.out.println("The 10001th prime number is: " + answer);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 

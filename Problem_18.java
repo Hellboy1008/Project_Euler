@@ -32,7 +32,7 @@ public class Problem_18 {
         }
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println(answer);
+        System.out.println("The maximum total from top to bottom is: " + answer);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 

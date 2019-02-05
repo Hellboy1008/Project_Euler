@@ -8,7 +8,7 @@ public class Problem_15 {
         double answer = factorial(40) / (factorial(20) * factorial(20));
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println(answer);
+        System.out.println("The total number of routes is: " + answer);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 

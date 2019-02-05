@@ -18,7 +18,8 @@ public class Problem_04 {
 
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println(largestPalindrome);
+        System.out.println(
+                "The largest palindrome made from the product of 2 three digits numbers is: " + largestPalindrome);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 

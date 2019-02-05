@@ -17,7 +17,7 @@ public class Problem_03 {
 
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println(target_number);
+        System.out.println("The largest prime factor is: " + target_number);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 

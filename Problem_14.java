@@ -28,7 +28,7 @@ public class Problem_14 {
         }
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println(answer);
+        System.out.println("The longest chain is produced by: " + answer);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 }

@@ -13,7 +13,7 @@ public class Problem_01 {
         totalSum = sum_of_three + sum_of_five - sum_of_fifteen;
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println(totalSum);
+        System.out.println("The sum of all multiples of 3 or 5 below 1000 is: " + totalSum);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 }

@@ -19,7 +19,7 @@ public class Problem_12 {
         }
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println(answer);
+        System.out.println("The first triangle number to have over 500 divisors is: " + answer);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 

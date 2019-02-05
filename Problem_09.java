@@ -33,7 +33,7 @@ public class Problem_09 {
         }
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println(product);
+        System.out.println("The product of abc is: " + product);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 

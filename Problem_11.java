@@ -67,7 +67,7 @@ public class Problem_11 {
         }
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println(maximum_product);
+        System.out.println("The greatest product is: " + maximum_product);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 }

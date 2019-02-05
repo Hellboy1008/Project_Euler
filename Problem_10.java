@@ -20,13 +20,13 @@ public class Problem_10 {
         }
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println(sum);
+        System.out.println("The sum of all prime numbers below two million is: " + sum);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 
     private static boolean checkPrime(long check_number) {
         for (int counter = 3; counter <= Math.sqrt(check_number); counter += 2) {
-            if (check_number % 2 == 0) {
+            if (check_number % 5 == 0) {
                 return false;
             }
             if (check_number % counter == 0) {

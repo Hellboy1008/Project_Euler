@@ -24,7 +24,7 @@ public class Problem_02 {
         }
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println(totalSum);
+        System.out.println("The sum of even fibonacci numbers under 4 million is: " + totalSum);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 }

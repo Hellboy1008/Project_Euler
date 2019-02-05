@@ -17,7 +17,7 @@ public class Problem_05 {
         }
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println(smallestMultiple);
+        System.out.println("The smallest positive number divisible by all numbers from 1-20 is: " + smallestMultiple);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 }

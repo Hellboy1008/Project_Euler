@@ -19,7 +19,7 @@ public class Problem_08 {
         }
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println(maximum_product);
+        System.out.println("The maximum product in this 1000 digit number is: " + maximum_product);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 }

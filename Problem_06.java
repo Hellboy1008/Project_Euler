@@ -12,7 +12,7 @@ public class Problem_06 {
                 - (2 * number * number * number + 3 * number * number + number) / 6;
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println(answer);
+        System.out.println("The difference is: " + answer);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 }

@@ -27,7 +27,7 @@ public class Problem_13 {
         sum = sum / 1000; // take away the last few digits
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println(sum);
+        System.out.println("The first ten digits of the sum is: " + sum);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 }
