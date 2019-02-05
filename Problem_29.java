@@ -11,9 +11,9 @@ public class Problem_29 {
         long startTime = System.nanoTime();
         addTerms(2, 100, 2, 100);
         int answer = values.size();
-        System.out.println("The number of distinct terms are: " + answer);
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
+        System.out.println("The number of distinct terms are: " + answer);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 
@@ -22,7 +22,7 @@ public class Problem_29 {
         for (int aValue = aMinValue; aValue <= aMaxValue; aValue++) {
             for (int bValue = bMinValue; bValue <= bMaxValue; bValue++) {
                 double num = Math.pow(aValue, bValue);
-                if (values.contains(num) == false){
+                if (values.contains(num) == false) {
                     values.add(num);
                 }
             }

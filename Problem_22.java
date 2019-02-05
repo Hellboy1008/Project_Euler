@@ -25,9 +25,9 @@ public class Problem_22 {
             }
             answer += alphabeticalValue;
         }
-        System.out.println("The total of all the name scores is: " + answer);
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
+        System.out.println("The total of all the name scores is: " + answer);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 

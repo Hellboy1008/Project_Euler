@@ -8,9 +8,9 @@ public class Problem_26 {
     public static void main(String[] args) {
         long startTime = System.nanoTime();
         int answer = determineLongestCycle(1000);
-        System.out.println("The longest recurring cycle is 1 / " + answer);
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
+        System.out.println("The longest recurring cycle is 1 / " + answer);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 

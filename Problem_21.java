@@ -16,9 +16,9 @@ public class Problem_21 {
         }
         // find amicable numbers
         answer = sumOfAmicableNumbers(sumOfAllFactors);
-        System.out.println("The sum of all the amicable numbers is:" + answer);
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
+        System.out.println("The sum of all the amicable numbers is:" + answer);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 

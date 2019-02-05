@@ -21,9 +21,9 @@ public class Problem_20 {
         for (int index = 0; index < factorialString.length(); index++) {
             answer += Character.getNumericValue(factorialString.charAt(index));
         }
-        System.out.println("The sum of all the digits is: " + answer);
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
+        System.out.println("The sum of all the digits is: " + answer);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 

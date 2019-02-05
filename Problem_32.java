@@ -9,10 +9,10 @@ public class Problem_32 {
     public static void main(String[] args) {
         long startTime = System.nanoTime();
         int answer = calculateProduct(1, 99, 100, 9999);
-        System.out.println(
-                "The sum of all products that can be written as pandigital using multiplication is: " + answer);
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
+        System.out.println(
+                "The sum of all products that can be written as pandigital using multiplication is: " + answer);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 

@@ -16,9 +16,9 @@ public class Problem_17 {
         int one_thousand = 11;
         int answer = one_to_ninety_nine + hundereds + hundered_and + numbers_before_hundred + numbers_after_hundred
                 + one_thousand;
-        System.out.println(answer);
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
+        System.out.println(answer);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 

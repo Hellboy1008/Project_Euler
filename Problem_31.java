@@ -11,9 +11,9 @@ public class Problem_31 {
         long startTime = System.nanoTime();
         createArray();
         int answer = array[array.length - 1][array[0].length - 1];
-        System.out.println("The total number of ways is: " + answer);
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
+        System.out.println("The total number of ways is: " + answer);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 

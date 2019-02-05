@@ -21,9 +21,9 @@ public class Problem_24 {
             factorialArray[index] = factorial(index);
         }
         solvePermutation();
-        System.out.println("The millionth lexicographic permutation is:" + answer.toString());
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
+        System.out.println("The millionth lexicographic permutation is:" + answer.toString());
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 
@@ -43,7 +43,7 @@ public class Problem_24 {
                 }
             }
             // check if the sequencing is complete
-            if (numbers.size() == 1){
+            if (numbers.size() == 1) {
                 answer.append(numbers.get(0));
                 limit = 0;
             }

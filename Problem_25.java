@@ -11,9 +11,9 @@ public class Problem_25 {
     public static void main(String[] args) {
         long startTime = System.nanoTime();
         int answer = findFibonacciIndex(1000);
-        System.out.println("The index of the first fibonacci with 1000 digits is: " + answer);
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
+        System.out.println("The index of the first fibonacci with 1000 digits is: " + answer);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 

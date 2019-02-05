@@ -8,9 +8,9 @@ public class Problem_33 {
     public static void main(String[] args) {
         long startTime = System.nanoTime();
         int answer = findCuriosFractionDenominator();
-        System.out.println("The value of the denominator is: " + answer);
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
+        System.out.println("The value of the denominator is: " + answer);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 

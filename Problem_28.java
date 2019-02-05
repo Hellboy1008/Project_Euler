@@ -7,9 +7,9 @@ public class Problem_28 {
     public static void main(String[] args) {
         long startTime = System.nanoTime();
         int answer = calculateDiagonalSum(1001);
-        System.out.println("The sum of the diagonal is " + answer);
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
+        System.out.println("The sum of the diagonal is " + answer);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 

@@ -6,10 +6,10 @@ public class Problem_30 {
     public static void main(String[] args) {
         long startTime = System.nanoTime();
         int answer = sumDigitPowers(354294);
-        System.out.println(
-                "The sum of numbers that can be written as the sum of the fifth powers of the digits is: " + answer);
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
+        System.out.println(
+                "The sum of numbers that can be written as the sum of the fifth powers of the digits is: " + answer);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 

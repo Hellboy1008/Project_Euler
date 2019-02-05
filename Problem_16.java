@@ -14,9 +14,9 @@ public class Problem_16 {
         for (int i = 0; i < power.length(); i++) {
             answer += Character.getNumericValue(power.charAt(i));
         }
-        System.out.println(answer);
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
+        System.out.println(answer);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 

@@ -8,9 +8,9 @@ public class Problem_27 {
     public static void main(String[] args) {
         long startTime = System.nanoTime();
         int answer = productOfCoefficients(1000, 1000);
-        System.out.println("The product of the coefficients is " + answer);
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
+        System.out.println("The product of the coefficients is " + answer);
         System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
     }
 
