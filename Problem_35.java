@@ -55,7 +55,7 @@ public class Problem_35 {
         }
         // check if the primes are circular primes
         int sum = 0;
-        int[] factorsOfTen = { 10, 100, 1000, 10000, 100000 };
+        int[] powersOfTen = { 10, 100, 1000, 10000, 100000 };
         for (int index = 0; index < circularPrimes.length; index++) {
             if (circularPrimes[index] == false) {
                 continue;
