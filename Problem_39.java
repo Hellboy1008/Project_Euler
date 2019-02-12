@@ -19,7 +19,7 @@ public class Problem_39 {
     private static int findMaxPythagoreanSolutions(int limit) {
         // add all possible pythagorean sums (countOne = n, countTwo = m, countThree =
         // k)
-        for (int countOne = 1; countOne < Math.sqrt(limit / 2); countOne++) {
+        for (int countOne = 1; countOne < 15; countOne++) {
             for (int countTwo = countOne; countTwo < Math.sqrt(limit / 2); countTwo++) {
                 // the two numbers can't be equal and both even -> m > n > 0
                 if (countOne == countTwo || (countOne % 2 == 0 && countTwo % 2 == 0)) {
