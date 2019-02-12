@@ -1,11 +1,9 @@
 
 //龍ONE
 
-import java.util.ArrayList;
-
 public class Problem_39 {
 
-    private static ArrayList<Integer> perimeterSum = new ArrayList<Integer>();
+    private static int[] perimeterOccurance = new int[1000 + 1];
 
     public static void main(String[] args) {
         long startTime = System.nanoTime();
@@ -25,13 +23,13 @@ public class Problem_39 {
                 if (countOne == countTwo || (countOne % 2 == 0 && countTwo % 2 == 0)) {
                     continue;
                 }
-                for (int countThree = 1; countThree < 41; countThree++) {
+                for (int countThree = 1; countThree < 83; countThree++) {
                     // a = d(m^2-n^2), b = 2*d*m*n, c = d(m^2+n^2)
                     int a = countThree * (countTwo * countTwo - countOne * countOne);
                     int b = 2 * countThree * countTwo * countOne;
                     int c = countThree * (countTwo * countTwo + countOne * countOne);
                     if (a + b + c <= limit) {
-                        perimeterSum.add(a + b + c);
+                        perimeterOccurance[a + b + c] += 1;
                     }
                 }
             }
@@ -39,17 +37,10 @@ public class Problem_39 {
         // find the most common solution
         int maxOccurance = 0;
         int mostCommon = 0;
-        for (int indexOne = 0; indexOne < perimeterSum.size(); indexOne++) {
-            int occurance = 0;
-            for (int indexTwo = indexOne; indexTwo < perimeterSum.size(); indexTwo++) {
-                if (indexOne != indexTwo
-                        && perimeterSum.get(indexOne).intValue() == perimeterSum.get(indexTwo).intValue()) {
-                    occurance++;
-                }
-            }
-            if (occurance > maxOccurance) {
-                mostCommon = perimeterSum.get(indexOne);
-                maxOccurance = occurance;
+        for (int index = 0; index < perimeterOccurance.length; index++) {
+            if (perimeterOccurance[index] > maxOccurance) {
+                maxOccurance = perimeterOccurance[index];
+                mostCommon = index;
             }
         }
         return mostCommon;
