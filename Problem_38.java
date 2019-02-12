@@ -1,15 +1,11 @@
 
 //龍ONE
 
-import java.util.ArrayList;
-
 public class Problem_38 {
-
-    private static ArrayList<Long> pandigitalNums = new ArrayList<Long>();
 
     public static void main(String[] args) {
         long startTime = System.nanoTime();
-        long answer = findLargestPandigital(49999);
+        long answer = findLargestPandigital(9999);
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
         System.out.println("The largest pandigital number is: " + answer);
@@ -19,6 +15,7 @@ public class Problem_38 {
     private static long findLargestPandigital(int limit) {
         long[] powersOfTen = { 1, 10, 100, 1000, 10000, 100000 };
         boolean[] digitsList;
+        long max = 0;
         // loop through numbers 1 to limit
         for (long countOne = 1; countOne < limit; countOne++) {
             long sum = 0;
@@ -62,16 +59,9 @@ public class Problem_38 {
                 digitsList[(int) sum % 10 - 1] = true;
                 sum /= 10;
             }
-            // add to ArrayList if it is pandigital
-            if (allDigits == true) {
-                pandigitalNums.add(sumTemp);
-            }
-        }
-        // find largest value in the ArrayList
-        long max = pandigitalNums.get(0);
-        for (int index = 1; index < pandigitalNums.size(); index++) {
-            if (pandigitalNums.get(index) > max) {
-                max = pandigitalNums.get(index);
+            // check if the pandigital num is bigger than the previous one
+            if (allDigits == true && sumTemp > max) {
+                max = sumTemp;
             }
         }
         return max;
