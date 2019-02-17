@@ -18,6 +18,9 @@ public class Problem_41 {
         notPrime = new boolean[limit];
         // set all non prime numbers to true
         for (int index = 2; index < notPrime.length; index++) {
+            if (index != 2 && index % 2 == 0) {
+                continue;
+            }
             for (int counter = index * 2; counter < notPrime.length; counter += index) {
                 notPrime[counter] = true;
             }
