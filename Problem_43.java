@@ -53,12 +53,14 @@ public class Problem_43 {
         }
         // run the same digit test 5 times to eliminate all impossible combinations
         for (int count = 0; count < 5; count++) {
+            // check last 2 digits of list 1 and first 2 digits of list 2
             compareLists(setD2D3D4, setD3D4D5, 2);
             compareLists(setD3D4D5, setD4D5D6, 2);
             compareLists(setD4D5D6, setD5D6D7, 2);
             compareLists(setD5D6D7, setD6D7D8, 2);
             compareLists(setD6D7D8, setD7D8D9, 2);
             compareLists(setD7D8D9, setD8D9D10, 2);
+            // check last digit of list 1 and first digit of list 2
             compareLists(setD6D7D8, setD8D9D10, 1);
             compareLists(setD5D6D7, setD7D8D9, 1);
             compareLists(setD4D5D6, setD6D7D8, 1);
