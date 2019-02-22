@@ -16,7 +16,7 @@ public class Problem_46 {
 
     private static int findCounterExample() {
         boolean counterEx = true;
-        boolean[] notPrime = new boolean[10000]; // guess and check upper limit
+        boolean[] notPrime = new boolean[6000]; // guess and check upper limit
         // set all non prime numbers to true
         for (int index = 2; index < notPrime.length; index++) {
             if (index != 2 && index % 2 == 0) {
@@ -26,7 +26,7 @@ public class Problem_46 {
                 notPrime[counter] = true;
             }
         }
-        // find counte example
+        // find counter example
         for (int indexOne = 2; indexOne < notPrime.length; indexOne++) {
             // only count odd composite
             if (indexOne % 2 == 0 || notPrime[indexOne] == false) {
