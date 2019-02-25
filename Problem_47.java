@@ -4,6 +4,8 @@
 public class Problem_47 {
 
     private static boolean[] notPrime;
+    private static int[] primeNums;
+    private static int[] nonPrimeNums;
 
     public static void main(String[] args) {
         long startTime = System.nanoTime();
@@ -15,6 +17,53 @@ public class Problem_47 {
     }
 
     private static int findConsecutiveNums(int lowerLimit, int upperLimit) {
+        initialiseArrays(lowerLimit, upperLimit);
+        // find the number of prime factors
+        int primeIndex;
+        int previousIndex;
+        int primeCount = 0;
+        int temp;
+        int consecutive = 0;
+        for (int count = 0; count < nonPrimeNums.length; count++) {
+            temp = nonPrimeNums[count];
+            primeIndex = 0;
+            previousIndex = -1;
+            primeCount = 0;
+            // find all prime factors
+            while (temp != 1) {
+                // there is always only one prime factor that is greater than the square root of
+                // the number
+                if (primeNums[primeIndex] >= Math.sqrt(nonPrimeNums[count])) {
+                    primeCount++;
+                    break;
+                }
+                if (temp % primeNums[primeIndex] == 0) {
+                    temp /= primeNums[primeIndex];
+                    if (previousIndex != primeIndex) {
+                        primeCount++;
+                    }
+                    previousIndex = primeIndex;
+                } else {
+                    primeIndex++;
+                }
+            }
+            if (primeCount == 4) {
+                consecutive++;
+            } else {
+                consecutive = 0;
+            }
+            if (consecutive == 4) {
+                return nonPrimeNums[count] - 3;
+            }
+            // if the numbers are no consecutive, ignore
+            if (nonPrimeNums[count + 1] != nonPrimeNums[count] + 1) {
+                consecutive = 0;
+            }
+        }
+        return primeCount;
+    }
+
+    private static void initialiseArrays(int lowerLimit, int upperLimit) {
         // initialise boolean array
         notPrime = new boolean[upperLimit];
         // set all non prime numbers to true
@@ -26,26 +75,30 @@ public class Problem_47 {
                 notPrime[counter] = true;
             }
         }
-        // find factors
-        int[] numOfPrimeFactors = new int[upperLimit];
-        for (int index = lowerLimit; index < numOfPrimeFactors.length; index++) {
+        // find the number of primes and non-primes
+        int primeLength = 0;
+        int nonPrimeLength = 0;
+        for (int index = 2; index < notPrime.length; index++) {
             if (notPrime[index] == true) {
-                for (int counter = 2; counter <= Math.sqrt(index); counter++) {
-                    if (notPrime[counter] == false && index % counter == 0) {
-                        numOfPrimeFactors[index]++;
-                    }
-                    if (notPrime[index / counter] == false && index % counter == 0) {
-                        numOfPrimeFactors[index]++;
-                    }
-                }
-            }
-            // find first number
-            if (numOfPrimeFactors[index] == 4 && numOfPrimeFactors[index - 1] == 4 && numOfPrimeFactors[index - 2] == 4
-                    && numOfPrimeFactors[index - 3] == 4) {
-                return index - 3;
+                nonPrimeLength++;
+            } else {
+                primeLength++;
             }
         }
-        return 0;
+        // initialise prime and nonPrime int[] arrays
+        int primeIndex = 0;
+        int nonPrimeIndex = 0;
+        primeNums = new int[primeLength];
+        nonPrimeNums = new int[nonPrimeLength];
+        for (int index = 2; index < notPrime.length; index++) {
+            if (notPrime[index] == true && index > lowerLimit) {
+                nonPrimeNums[nonPrimeIndex] = index;
+                nonPrimeIndex++;
+            } else if (notPrime[index] == false) {
+                primeNums[primeIndex] = index;
+                primeIndex++;
+            }
+        }
     }
 
 }
