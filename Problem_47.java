@@ -39,7 +39,7 @@ public class Problem_47 {
                     }
                 }
             }
-            //
+            // find first number
             if (numOfPrimeFactors[index] == 4 && numOfPrimeFactors[index - 1] == 4 && numOfPrimeFactors[index - 2] == 4
                     && numOfPrimeFactors[index - 3] == 4) {
                 return index - 3;
