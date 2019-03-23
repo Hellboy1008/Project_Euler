@@ -2,12 +2,19 @@
 //龍ONE
 
 public class Problem_03 {
+
+    private static final long TIME_CONVERSION = 1000000000;
+    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+    private static final String ANSWER = "The largest prime factor is: ";
+    private static final int SMALLEST_FACTOR = 2;
+    private static final String NUMBER = "600851475143";
+
     public static void main(String[] args) {
 
         long startTime = System.nanoTime();
-        long target_number = Long.parseLong("600851475143");
+        long target_number = Long.parseLong(NUMBER);
         // Use prime factorization to find largest prime factor
-        for (int factor = 2; factor < Math.sqrt(target_number); factor++) {
+        for (int factor = SMALLEST_FACTOR; factor < Math.sqrt(target_number); factor++) {
             if (checkPrime(factor) == true) {
                 if (target_number % factor == 0) {
                     target_number = target_number / factor;
@@ -17,12 +24,12 @@ public class Problem_03 {
 
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println("The largest prime factor is: " + target_number);
-        System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
+        System.out.println(ANSWER + target_number);
+        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
     }
 
     private static boolean checkPrime(long check_number) {
-        for (int counter = 2; counter <= Math.sqrt(check_number); counter++) {
+        for (int counter = SMALLEST_FACTOR; counter <= Math.sqrt(check_number); counter++) {
             if (check_number % counter == 0) {
                 return false;
             }

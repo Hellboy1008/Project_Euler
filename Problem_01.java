@@ -19,6 +19,6 @@ public class Problem_01 {
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
         System.out.println(ANSWER + totalSum);
-        System.out.printf(TIME_TAKEN, timeTaken / 1000000000);
+        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
     }
 }
