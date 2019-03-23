@@ -13,7 +13,8 @@ public class Problem_01 {
     public static void main(String[] args) {
 
         long startTime = System.nanoTime();
-        // Add sum of multiples of 3 and/or 5 under 1000
+        // Add sum of multiples of 3 and/or 5 under 1000 and subtract the multiples of
+        // fifteen
         int totalSum = SUM_OF_MULTIPLES_THREE + SUM_OF_MULTIPLES_FIVE - SUM_OF_MULTIPLES_FIFTEEN;
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
