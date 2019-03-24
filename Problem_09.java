@@ -2,6 +2,14 @@
 //龍ONE
 
 public class Problem_09 {
+
+    private static final long TIME_CONVERSION = 1000000000;
+    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+    private static final String ANSWER = "The product of abc is: ";
+    private static final int SUM = 1000;
+    private static final int SUM_HALVED = SUM / 2;
+    private static final int SMALLEST_FACTOR = 2;
+
     public static void main(String[] args) {
 
         long startTime = System.nanoTime();
@@ -10,21 +18,21 @@ public class Problem_09 {
         int product = 0;
         boolean completed = false;
         // Calculate answer using Euclid's Pythagorean Triplets
-        for (m = 2; m < 23; m++) {
-            if (500 % m == 0) {
-                if (m % 2 == 0) {
+        for (m = SMALLEST_FACTOR; m < (int) Math.sqrt(SUM_HALVED) + 1; m++) {
+            if (SUM_HALVED % m == 0) {
+                if (m % SMALLEST_FACTOR == 0) {
                     k = m + 1;
                 } else {
-                    k = m + 2;
+                    k = m + SMALLEST_FACTOR;
                 }
-                while (k < 2 * m && k <= 500 * m) {
-                    if (500 * m % k == 0 && gcd(k, m) == 1) {
-                        product = (500 * (2 * m - k) / m) * (1000 * (k - m) / k)
-                                * (500 * (k * k - 2 * k * m + 2 * m * m) / (m * k));
+                while (k < SMALLEST_FACTOR * m && k <= SUM_HALVED * m) {
+                    if (SUM_HALVED * m % k == 0 && gcd(k, m) == 1) {
+                        product = (SUM_HALVED * (SMALLEST_FACTOR * m - k) / m) * (SUM * (k - m) / k)
+                                * (SUM_HALVED * (k * k - SMALLEST_FACTOR * k * m + SMALLEST_FACTOR * m * m) / (m * k));
                         completed = true;
                         break;
                     }
-                    k += 2;
+                    k += SMALLEST_FACTOR;
                 }
             }
             if (completed == true) {
@@ -33,8 +41,8 @@ public class Problem_09 {
         }
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println("The product of abc is: " + product);
-        System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
+        System.out.println(ANSWER + product);
+        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
     }
 
     private static int gcd(int a, int b) {
