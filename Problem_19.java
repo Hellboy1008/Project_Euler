@@ -5,37 +5,48 @@ import java.util.ArrayList;
 
 public class Problem_19 {
 
+    private static final long TIME_CONVERSION = 1000000000;
+    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+    private static final String ANSWER = "The number of sundays that all on the first in the 19th century is: ";
+    private static final int FIRST_SUNDAY_DATE = 6; // Jan 6 1901 is the first Sunday
+    private static final int[] NUMBER_OF_DAYS = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+    private static final int[] NUMBER_OF_DAYS_LEAP = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+    private static final int START_YEAR = 1901;
+    private static final int END_YEAR = 2000;
+    private static final int CENTURY = 100;
+    private static final int CENTURY_LEAP_DIVISOR = 400;
+    private static final int LEAP_DIVISOR = 4;
+    private static final int DAYS_IN_WEEK = 7;
+
     public static void main(String[] args) {
         long startTime = System.nanoTime();
-        int sunday = 6; // Jan 6 1901 is the first Sunday
         int answer = 0;
+        int sunday = FIRST_SUNDAY_DATE;
         boolean leapYear = false;
-        int[] numberOfDays = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-        int[] numberOfDays_LeapYear = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
         ArrayList<Integer> allSundays = new ArrayList<Integer>();
         // determine all Sundays
-        for (int year = 1901; year <= 2000; year++) {
-            if (year % 100 == 0 && year % 400 == 0) {
+        for (int year = START_YEAR; year <= END_YEAR; year++) {
+            if (year % CENTURY == 0 && year % CENTURY_LEAP_DIVISOR == 0) {
                 leapYear = true;
-            } else if (year % 4 == 0) {
+            } else if (year % LEAP_DIVISOR == 0) {
                 leapYear = true;
             } else {
                 leapYear = false;
             }
-            for (int month = 1; month <= 12; month++) {
+            for (int month = 1; month <= NUMBER_OF_DAYS.length; month++) {
                 // calculate sundays for the month
                 if (leapYear == false) {
-                    while (sunday <= numberOfDays[month - 1]) {
+                    while (sunday <= NUMBER_OF_DAYS[month - 1]) {
                         allSundays.add(sunday);
-                        sunday += 7;
+                        sunday += DAYS_IN_WEEK;
                     }
-                    sunday = sunday - numberOfDays[month - 1];
+                    sunday = sunday - NUMBER_OF_DAYS[month - 1];
                 } else {
-                    while (sunday <= numberOfDays_LeapYear[month - 1]) {
+                    while (sunday <= NUMBER_OF_DAYS_LEAP[month - 1]) {
                         allSundays.add(sunday);
-                        sunday += 7;
+                        sunday += DAYS_IN_WEEK;
                     }
-                    sunday = sunday - numberOfDays_LeapYear[month - 1];
+                    sunday = sunday - NUMBER_OF_DAYS_LEAP[month - 1];
                 }
             }
         }
@@ -47,8 +58,8 @@ public class Problem_19 {
         }
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println("The number of sundays that all on the first in the 19th century is: " + answer);
-        System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
+        System.out.println(ANSWER + answer);
+        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
     }
 
 }
