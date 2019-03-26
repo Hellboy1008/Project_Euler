@@ -3,23 +3,28 @@
 
 public class Problem_17 {
 
+    private static final long TIME_CONVERSION = 1000000000;
+    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+    private static final String ANSWER = "The total number of letter used is: ";
+    private static final int ONE_TO_NINE_SUM = 36;
+    private static final int TEN_TO_NINETEEN_SUM = 70;
+    private static final int TWENTY_TO_NINETY_SUM = 46;
+    private static final int ONE_TO_NINETY_NINE_SUM = ONE_TO_NINE_SUM + TEN_TO_NINETEEN_SUM + TWENTY_TO_NINETY_SUM * 10
+            + ONE_TO_NINE_SUM * 8;
+    private static final int HUNDREDS_SUM = 7 * 9 + ONE_TO_NINE_SUM;
+    private static final int HUNDREDS_AND_SUM = 10 * 99 * 9;
+    private static final int NUMBERS_BEFORE_HUNDREDS_SUM = ONE_TO_NINE_SUM * 99;
+    private static final int NUMBERS_AFTER_HUNDREDS_SUM = ONE_TO_NINETY_NINE_SUM * 9;
+    private static final int ONE_THOUSAND_SUM = 11;
+
     public static void main(String[] args) {
         long startTime = System.nanoTime();
-        int one_to_nine = 36;
-        int ten_to_nineteen = 70;
-        int twenty_to_ninety = 46;
-        int one_to_ninety_nine = one_to_nine + ten_to_nineteen + twenty_to_ninety * 10 + one_to_nine * 8;
-        int hundereds = 7 * 9 + one_to_nine;
-        int hundered_and = 10 * 99 * 9;
-        int numbers_before_hundred = one_to_nine * 99;
-        int numbers_after_hundred = one_to_ninety_nine * 9;
-        int one_thousand = 11;
-        int answer = one_to_ninety_nine + hundereds + hundered_and + numbers_before_hundred + numbers_after_hundred
-                + one_thousand;
+        int answer = ONE_TO_NINETY_NINE_SUM + HUNDREDS_SUM + HUNDREDS_AND_SUM + NUMBERS_BEFORE_HUNDREDS_SUM
+                + NUMBERS_AFTER_HUNDREDS_SUM + ONE_THOUSAND_SUM;
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println("The total number of letter used is: " + answer);
-        System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
+        System.out.println(ANSWER + answer);
+        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
     }
 
 }

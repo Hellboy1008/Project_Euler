@@ -3,13 +3,18 @@
 
 public class Problem_15 {
 
+    private static final long TIME_CONVERSION = 1000000000;
+    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+    private static final String ANSWER = "The total number of routes is: ";
+    private static final int GRID_SIZE = 20;
+
     public static void main(String[] args) {
         long startTime = System.nanoTime();
-        double answer = factorial(40) / (factorial(20) * factorial(20));
+        double answer = factorial(GRID_SIZE + GRID_SIZE) / (factorial(GRID_SIZE) * factorial(GRID_SIZE));
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println("The total number of routes is: " + answer);
-        System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
+        System.out.println(ANSWER + answer);
+        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
     }
 
     private static double factorial(double value) {
