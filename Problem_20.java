@@ -5,6 +5,11 @@ import java.math.BigInteger;
 
 public class Problem_20 {
 
+    private static final long TIME_CONVERSION = 1000000000;
+    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+    private static final String ANSWER = "The sum of all the digits is: ";
+    private static final int FACTORIAL_NUM = 100;
+
     public static void main(String[] args) {
         long startTime = System.nanoTime();
         int answer = 0;
@@ -12,7 +17,7 @@ public class Problem_20 {
         BigInteger factorial = BigInteger.ONE;
         BigInteger startingNum = BigInteger.ONE;
         // calculate 100!
-        for (int index = 1; index <= 100; index++) {
+        for (int index = 1; index <= FACTORIAL_NUM; index++) {
             factorial = factorial.multiply(startingNum);
             startingNum = startingNum.add(BigInteger.ONE);
         }
@@ -23,8 +28,8 @@ public class Problem_20 {
         }
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println("The sum of all the digits is: " + answer);
-        System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
+        System.out.println(ANSWER + answer);
+        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
     }
 
 }
