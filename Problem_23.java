@@ -5,6 +5,11 @@ import java.util.ArrayList;
 
 public class Problem_23 {
 
+    private static final long TIME_CONVERSION = 1000000000;
+    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+    private static final String ANSWER = "The sum of all non-abundant numbers is: ";
+    private static final int LOWER_BOUND = 2;
+    private static final int UPPER_BOUND = 28123;
     private static ArrayList<Integer> abundantNumbers = new ArrayList<Integer>();
     private static boolean[] sumOfAbundantNumbers = new boolean[28124];
 
@@ -13,14 +18,14 @@ public class Problem_23 {
         int sum = 0;
         int answer = 0;
         // Find abundant numbers
-        for (int number = 2; number < 28123; number++) {
+        for (int number = LOWER_BOUND; number < UPPER_BOUND; number++) {
             findAbundantNumbers(number);
         }
         // Make all sum of abundant numbers "true" in the boolean array
         for (int element = 0; element < abundantNumbers.size() - 1; element++) {
             for (int index = element; index < abundantNumbers.size(); index++) {
                 sum = abundantNumbers.get(element) + abundantNumbers.get(index);
-                if (sum <= 28123) {
+                if (sum <= UPPER_BOUND) {
                     sumOfAbundantNumbers[sum] = true;
                 }
             }
@@ -33,8 +38,8 @@ public class Problem_23 {
         }
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println("The sum of all non-abundant numbers is: " + answer);
-        System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
+        System.out.println(ANSWER + answer);
+        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
     }
 
     private static void findAbundantNumbers(int input_number) {

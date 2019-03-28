@@ -6,6 +6,11 @@ import java.lang.StringBuilder;
 
 public class Problem_24 {
 
+    private static final long TIME_CONVERSION = 1000000000;
+    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+    private static final String ANSWER = "The millionth lexicographic permutation is: ";
+    private static final int TOTAL_DIGITS = 10;
+    private static final int TARGET = 1000000;
     private static ArrayList<Integer> numbers = new ArrayList<Integer>();
     private static int[] factorialArray = new int[10];
     private static StringBuilder answer = new StringBuilder();
@@ -13,7 +18,7 @@ public class Problem_24 {
     public static void main(String[] args) {
         long startTime = System.nanoTime();
         // Initialise numbers ArrayList
-        for (int index = 0; index < 10; index++) {
+        for (int index = 0; index < TOTAL_DIGITS; index++) {
             numbers.add(index);
         }
         // Initialise factorial array
@@ -23,16 +28,15 @@ public class Problem_24 {
         solvePermutation();
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println("The millionth lexicographic permutation is:" + answer.toString());
-        System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
+        System.out.println(ANSWER + answer.toString());
+        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
     }
 
     private static void solvePermutation() {
-        int limit = 1000000;
+        int limit = TARGET;
         int determinedNumbers = 1;
-        int x = 0;
         while (limit != 0) {
-            for (int counter = 1; counter < 10; counter++) {
+            for (int counter = 1; counter < TOTAL_DIGITS; counter++) {
                 if (limit - factorialArray[factorialArray.length - determinedNumbers] * counter > 0) {
                 } else {
                     limit -= factorialArray[factorialArray.length - determinedNumbers] * (counter - 1);

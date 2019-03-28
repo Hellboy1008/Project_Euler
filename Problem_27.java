@@ -5,13 +5,19 @@ import java.util.ArrayList;
 
 public class Problem_27 {
 
+    private static final long TIME_CONVERSION = 1000000000;
+    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+    private static final String ANSWER = "The product of the coefficients is ";
+    private static final int UPPER_BOUND = 1000;
+    private static final int SMALLEST_PRIME = 2;
+
     public static void main(String[] args) {
         long startTime = System.nanoTime();
-        int answer = productOfCoefficients(1000, 1000);
+        int answer = productOfCoefficients(UPPER_BOUND, UPPER_BOUND);
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println("The product of the coefficients is " + answer);
-        System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
+        System.out.println(ANSWER + answer);
+        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
     }
 
     private static int productOfCoefficients(int max_value_one, int max_value_two) {
@@ -20,7 +26,7 @@ public class Problem_27 {
         int largest_a_value = 0;
         int largest_b_value = 0;
         // values for b must be prime
-        for (int counter = 2; counter <= max_value_two; counter++) {
+        for (int counter = SMALLEST_PRIME; counter <= max_value_two; counter++) {
             if (checkPrime(counter) == true) {
                 b_values.add(counter);
             }
@@ -47,7 +53,7 @@ public class Problem_27 {
     }
 
     private static boolean checkPrime(int check_number) {
-        for (int counter = 2; counter <= Math.sqrt(check_number); counter++) {
+        for (int counter = SMALLEST_PRIME; counter <= Math.sqrt(check_number); counter++) {
             if (check_number % counter == 0) {
                 return false;
             }

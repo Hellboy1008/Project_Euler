@@ -5,13 +5,20 @@ import java.math.BigInteger;
 
 public class Problem_26 {
 
+    private static final long TIME_CONVERSION = 1000000000;
+    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+    private static final String ANSWER = "The longest recurring cycle is 1 / ";
+    private static final int UPPER_BOUND = 1000;
+    private static final int FACTOR_ONE = 2;
+    private static final int FACTOR_TWO = 5;
+
     public static void main(String[] args) {
         long startTime = System.nanoTime();
-        int answer = determineLongestCycle(1000);
+        int answer = determineLongestCycle(UPPER_BOUND);
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println("The longest recurring cycle is 1 / " + answer);
-        System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
+        System.out.println(ANSWER + answer);
+        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
     }
 
     private static int determineLongestCycle(int maxDivisor) {
@@ -38,11 +45,11 @@ public class Problem_26 {
     }
 
     private static int removeFactors(int number) {
-        while (number % 2 == 0) {
-            number = number / 2;
+        while (number % FACTOR_ONE == 0) {
+            number = number / FACTOR_ONE;
         }
-        while (number % 5 == 0) {
-            number = number / 5;
+        while (number % FACTOR_TWO == 0) {
+            number = number / FACTOR_TWO;
         }
         return number;
     }
