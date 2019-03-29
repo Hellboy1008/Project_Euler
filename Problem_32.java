@@ -6,33 +6,41 @@ import java.util.ArrayList;
 
 public class Problem_32 {
 
+    private static final long TIME_CONVERSION = 1000000000;
+    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+    private static final String ANSWER = "The sum of all products that can be written as pandigital"
+            + " using multiplication is: ";
+    private static final int MULTIPLICAND_MAX = 99;
+    private static final int MULTIPLIER_MIN = 100;
+    private static final int MULTIPLIER_MAX = 9999;
+    private static final int PRODUCT_MAX = 10000;
+    private static final String[] DIGITS = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+
     public static void main(String[] args) {
         long startTime = System.nanoTime();
-        int answer = calculateProduct(1, 99, 100, 9999);
+        int answer = calculateProduct(1, MULTIPLICAND_MAX, MULTIPLIER_MIN, MULTIPLIER_MAX);
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println(
-                "The sum of all products that can be written as pandigital using multiplication is: " + answer);
-        System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
+        System.out.println(ANSWER + answer);
+        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
     }
 
     private static int calculateProduct(int multiplicandMin, int multiplicandMax, int multiplierMin,
             int multiplierMax) {
         ArrayList<Integer> productsArray = new ArrayList<Integer>();
-        String[] digits = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
         StringBuilder digitCollection = new StringBuilder("");
         boolean panDigital = true;
         int sumOfProducts = 0;
         for (int firstNum = multiplicandMin; firstNum <= multiplicandMax; firstNum++) {
             for (int secondNum = multiplierMin; secondNum <= multiplierMax; secondNum++) {
-                if (firstNum * secondNum >= 10000) { // product has to be 4 digits long
+                if (firstNum * secondNum >= PRODUCT_MAX) { // product has to be 4 digits long
                     continue;
                 }
                 digitCollection.append(firstNum);
                 digitCollection.append(secondNum);
                 digitCollection.append(firstNum * secondNum);
-                for (int index = 0; index < digits.length; index++) {
-                    if (digitCollection.toString().contains(digits[index]) == false) {
+                for (int index = 0; index < DIGITS.length; index++) {
+                    if (digitCollection.toString().contains(DIGITS[index]) == false) {
                         panDigital = false;
                         break;
                     }

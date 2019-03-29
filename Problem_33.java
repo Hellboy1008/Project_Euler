@@ -5,28 +5,37 @@ import java.util.ArrayList;
 
 public class Problem_33 {
 
+    private static final long TIME_CONVERSION = 1000000000;
+    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+    private static final String ANSWER = "The value of the denominator is: ";
+    private static final int SMALLEST_NUMERATOR = 10;
+    private static final int LARGEST_NUMERATOR = 100;
+    private static final int NUMBERS_IN_FRACTIONS = 2;
+
     public static void main(String[] args) {
         long startTime = System.nanoTime();
         int answer = findCuriosFractionDenominator();
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println("The value of the denominator is: " + answer);
-        System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
+        System.out.println(ANSWER + answer);
+        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
     }
 
     private static int findCuriosFractionDenominator() {
         ArrayList<Integer> curiousFractionNumerator = new ArrayList<Integer>();
         ArrayList<Integer> curiousFractionDenominator = new ArrayList<Integer>();
         // find curious fractions
-        for (double numerator = 10; numerator < 100; numerator++) {
-            for (double denominator = numerator; denominator < 100; denominator++) {
+        for (double numerator = SMALLEST_NUMERATOR; numerator < LARGEST_NUMERATOR; numerator++) {
+            for (double denominator = numerator; denominator < LARGEST_NUMERATOR; denominator++) {
                 // ignore if numerator and denominator have the same value
                 if (numerator == denominator) {
                     continue;
                 }
                 double division = numerator / denominator;
-                double wrongDivision = (double) ((int) (numerator) / 10) / (double) ((int) (denominator) % 10);
-                boolean cancellable = (int) (numerator) % 10 == (int) (denominator) / 10;
+                double wrongDivision = (double) ((int) (numerator) / SMALLEST_NUMERATOR)
+                        / (double) ((int) (denominator) % SMALLEST_NUMERATOR);
+                boolean cancellable = (int) (numerator) % SMALLEST_NUMERATOR == (int) (denominator)
+                        / SMALLEST_NUMERATOR;
                 // determine whether a fraction is curious using these three values
                 if (division == wrongDivision && cancellable == true) {
                     curiousFractionNumerator.add((int) numerator);
@@ -50,8 +59,7 @@ public class Problem_33 {
     }
 
     private static int[] simplyFraction(int numerator, int denominator) {
-        int[] newFraction = new int[2];
-        ArrayList<Integer> factors = new ArrayList<Integer>();
+        int[] newFraction = new int[NUMBERS_IN_FRACTIONS];
         // find all factors of numerator (excluding 1)
         for (int counter = 1; counter <= Math.sqrt(numerator); counter++) {
             int factor = numerator / counter;
