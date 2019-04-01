@@ -4,37 +4,45 @@ import java.util.Arrays;
 
 public class Problem_49 {
 
+    private static final long TIME_CONVERSION = 1000000000;
+    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+    private static final String ANSWER = "The 12-digit number is: ";
+    private static final int FOUR_DIGIT_MAX = 9999;
+    private static final int SMALLEST_PRIME = 2;
+    private static final int LOWER_BOUND = 1488;
+    private static final int TENS_DIGIT = 10;
+
     public static void main(String[] args) {
         long startTime = System.nanoTime();
         String answer = primePermutations();
         long finishTime = System.nanoTime();
         double timeTaken = (double) (finishTime - startTime);
-        System.out.println("The 12-digit number is: " + answer);
-        System.out.println("Time Taken:" + timeTaken / 1000000000 + " seconds");
+        System.out.println(ANSWER + answer);
+        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
     }
 
     private static String primePermutations() {
         // initialise boolean array
-        boolean[] notPrime = new boolean[10000];
+        boolean[] notPrime = new boolean[FOUR_DIGIT_MAX + 1];
         // set all non prime numbers to true
-        for (int index = 2; index < notPrime.length; index++) {
-            if (index != 2 && index % 2 == 0) {
+        for (int index = SMALLEST_PRIME; index < notPrime.length; index++) {
+            if (index != SMALLEST_PRIME && index % SMALLEST_PRIME == 0) {
                 continue;
             }
-            for (int counter = index * 2; counter < notPrime.length; counter += index) {
+            for (int counter = index * SMALLEST_PRIME; counter < notPrime.length; counter += index) {
                 notPrime[counter] = true;
             }
         }
         // intialise prime array
         int numOfPrimes = 0;
-        for (int index = 1488; index < notPrime.length; index++) {
+        for (int index = LOWER_BOUND; index < notPrime.length; index++) {
             if (notPrime[index] == false) {
                 numOfPrimes++;
             }
         }
         int[] prime = new int[numOfPrimes];
         int primeIndex = 0;
-        for (int index = 1488; index < notPrime.length; index++) {
+        for (int index = LOWER_BOUND; index < notPrime.length; index++) {
             if (notPrime[index] == false) {
                 prime[primeIndex] = index;
                 primeIndex++;
@@ -59,13 +67,13 @@ public class Problem_49 {
     }
 
     private static boolean numValue(int numOne, int numTwo) {
-        int[] digitsOne = new int[10];
-        int[] digitsTwo = new int[10];
+        int[] digitsOne = new int[TENS_DIGIT];
+        int[] digitsTwo = new int[TENS_DIGIT];
         while (numOne != 0 && numTwo != 0) {
-            digitsOne[numOne % 10]++;
-            digitsTwo[numTwo % 10]++;
-            numOne /= 10;
-            numTwo /= 10;
+            digitsOne[numOne % TENS_DIGIT]++;
+            digitsTwo[numTwo % TENS_DIGIT]++;
+            numOne /= TENS_DIGIT;
+            numTwo /= TENS_DIGIT;
         }
         // check if digits are equal
         for (int index = 0; index < digitsOne.length; index++) {
