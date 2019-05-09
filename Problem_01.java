@@ -1,5 +1,10 @@
 
-//龍ONE
+/**
+ * Created by: 龍ONE
+ * Date Created: Oct 12, 2017
+ * Date Edited: May 8, 2019
+ * Purpose: Solution to Project Euler Problem 1
+ */
 
 public class Problem_01 {
 
