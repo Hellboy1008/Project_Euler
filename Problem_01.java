@@ -25,7 +25,7 @@ public class Problem_01 {
     // answer prompt
     private static final String ANSWER = "The sum of all multiples of 3 or 5 below 1000 is: ";
     // time take to solve the problem
-    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+    private static final String TIME_TAKEN = "Time Taken: %s seconds";
 
     /**
      * The main method executes the solution and prints it alongside the time taken

@@ -25,7 +25,7 @@ public class Problem_02 {
     // answer prompt
     private static final String ANSWER = "The sum of even fibonacci numbers under 4 million is: ";
     // time take to solve the problem
-    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+    private static final String TIME_TAKEN = "Time Taken: %s seconds";
 
     /**
      * The main method executes the solution and prints it alongside the time taken

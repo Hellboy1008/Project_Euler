@@ -23,7 +23,7 @@ public class Problem_03 {
     // answer prompt
     private static final String ANSWER = "The largest prime factor is: ";
     // time take to solve the problem
-    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+    private static final String TIME_TAKEN = "Time Taken: %s seconds";
 
     /**
      * The main method executes the solution and prints it alongside the time taken
