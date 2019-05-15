@@ -1,7 +1,7 @@
 
 /**
  * Created by: 龍ONE 
- * Date Created: Oct 12, 2017
+ * Date Created: Dec 28, 2017
  * Date Edited: May 13, 2019
  * Purpose: Solution to Project Euler Problem 4
  */
