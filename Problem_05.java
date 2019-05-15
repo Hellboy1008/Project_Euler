@@ -1,6 +1,15 @@
 
-//龍ONE
+/**
+ * Created by: 龍ONE 
+ * Date Created: Dec 28, 2017
+ * Date Edited: May 14, 2019
+ * Purpose: Solution to Project Euler Problem 5
+ */
 
+/**
+ * This class contains a method that calculates the smallest number divisible by
+ * n consecutive integers as well as the main method that executes the program.
+ */
 public class Problem_05 {
 
     private static final long TIME_CONVERSION = 1000000000;
