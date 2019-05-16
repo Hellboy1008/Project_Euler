@@ -6,8 +6,6 @@
  * Purpose: Solution to Project Euler Problem 5
  */
 
-import java.util.Arrays;
-
 /**
  * This class contains a method that calculates the smallest number divisible by
  * n consecutive integers as well as the main method that executes the program.
