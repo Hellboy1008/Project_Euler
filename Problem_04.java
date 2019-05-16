@@ -53,34 +53,6 @@ public class Problem_04 {
     }
 
     /**
-     * This method finds the largest palindrome from the product of two numbers from
-     * the parameter lower_bound to upper_bound.
-     * 
-     * @param lower_bound The lower bound for the method
-     * @param upper_bound The upper bound for the method
-     * @return The largest palindrome product of two numbers from lower_bound to
-     *         upper_bound
-     */
-    private static int findLargestPalindrome(int lower_bound, int upper_bound) {
-        // holds the largest palindrome
-        int largestPalindrome = 0;
-        // holds the product of two numbers
-        int product;
-
-        // check each permutation from lower to upper bound
-        for (int first_num = lower_bound; first_num < upper_bound; first_num++) {
-            for (int second_num = lower_bound; second_num < upper_bound; second_num++) {
-                product = first_num * second_num;
-                if (checkPalindrome(product) == true && product > largestPalindrome) {
-                    largestPalindrome = product;
-                }
-            }
-        }
-
-        return largestPalindrome;
-    }
-
-    /**
      * This method checks if a number is a palindrome.
      * 
      * @param number The number being checked
@@ -109,5 +81,33 @@ public class Problem_04 {
         }
 
         return false;
+    }
+
+    /**
+     * This method finds the largest palindrome from the product of two numbers from
+     * the parameter lower_bound to upper_bound.
+     * 
+     * @param lower_bound The lower bound for the method
+     * @param upper_bound The upper bound for the method
+     * @return The largest palindrome product of two numbers from lower_bound to
+     *         upper_bound
+     */
+    private static int findLargestPalindrome(int lower_bound, int upper_bound) {
+        // holds the largest palindrome
+        int largestPalindrome = 0;
+        // holds the product of two numbers
+        int product;
+
+        // check each permutation from lower to upper bound
+        for (int first_num = lower_bound; first_num < upper_bound; first_num++) {
+            for (int second_num = lower_bound; second_num < upper_bound; second_num++) {
+                product = first_num * second_num;
+                if (checkPalindrome(product) == true && product > largestPalindrome) {
+                    largestPalindrome = product;
+                }
+            }
+        }
+
+        return largestPalindrome;
     }
 }
