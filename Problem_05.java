@@ -56,8 +56,8 @@ public class Problem_05 {
     }
 
     /**
-     * This method determines the smallest multiple divisible by
-     * all positive integers from 1 to upper_bound.
+     * This method determines the smallest multiple divisible by all positive
+     * integers from 1 to upper_bound.
      * 
      * @param upper_bound The largest factor of the multiple
      * @return The smallest multiple that fulfills the conditions
