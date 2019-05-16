@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Dec 28, 2017
- * Date Edited: May 14, 2019
+ * Date Edited: May 16, 2019
  * Purpose: Solution to Project Euler Problem 4
  */
 
