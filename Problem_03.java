@@ -50,22 +50,6 @@ public class Problem_03 {
     }
 
     /**
-     * This methods find the largest prime factor of a number.
-     * 
-     * @param target The number in question
-     * @return The largest prime factor of the number
-     */
-    private static long findLargestPrimeFactor(long target) {
-        // Use prime factorization to find largest prime factor
-        for (int factor = SMALLEST_FACTOR; factor < Math.sqrt(target); factor++) {
-            if (checkPrime(factor) == true && target % factor == 0) {
-                target = target / factor;
-            }
-        }
-        return target;
-    }
-
-    /**
      * This method determines whether a number is prime.
      * 
      * @param number The number in question
@@ -79,5 +63,21 @@ public class Problem_03 {
             }
         }
         return true;
+    }
+
+    /**
+     * This methods find the largest prime factor of a number.
+     * 
+     * @param target The number in question
+     * @return The largest prime factor of the number
+     */
+    private static long findLargestPrimeFactor(long target) {
+        // Use prime factorization to find largest prime factor
+        for (int factor = SMALLEST_FACTOR; factor < Math.sqrt(target); factor++) {
+            if (checkPrime(factor) == true && target % factor == 0) {
+                target = target / factor;
+            }
+        }
+        return target;
     }
 }
