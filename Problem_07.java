@@ -1,6 +1,15 @@
 
-//龍ONE
+/**
+ * Created by: 龍ONE 
+ * Date Created: Jan 3, 2018
+ * Date Edited: May 16, 2019
+ * Purpose: Solution to Project Euler Problem 6
+ */
 
+/**
+ * This class contains a method that calculates the nth prime number. The main
+ * method executes the program.
+ */
 public class Problem_07 {
 
     private static final long TIME_CONVERSION = 1000000000;
