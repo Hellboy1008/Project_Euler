@@ -84,7 +84,6 @@ public class Problem_07 {
                 return index;
             }
         }
-
         return 0;
     }
 }
