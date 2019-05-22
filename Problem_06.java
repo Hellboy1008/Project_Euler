@@ -56,7 +56,7 @@ public class Problem_06 {
 
     /**
      * This method finds the sum of the natural numbers from 1 to upper_bound using
-     * the equation (n^2+n)/2
+     * the equation (n^2+n)/2.
      * 
      * @param upper_bound The upper bound for the sum
      * @return The sum of the first upper_bound natural numbers
