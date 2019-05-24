@@ -1,43 +1,112 @@
 
-//龍ONE
+/**
+ * Created by: 龍ONE 
+ * Date Created: Jan 15, 2018
+ * Date Edited: May 23, 2019
+ * Purpose: Solution to Project Euler Problem 8
+ */
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+/**
+ * This class contains a method that calculates the greatest product of adjacent
+ * values in a large number. The main method executes the program.
+ */
 public class Problem_08 {
 
-    private static final long TIME_CONVERSION = 1000000000;
-    private static final String TIME_TAKEN = "Time Taken:%s seconds";
-    private static final String ANSWER = "The maximum product in this 1000 digit number is: ";
-    private static final String INPUT = "73167176531330624919225119674426574742355349194934969"
-            + "8352031277450632623957831801698480186947885184385861560789112949495459501737958"
-            + "3319528532088055111254069874715852386305071569329096329522744304355766896648950"
-            + "4452445231617318564030987111217223831136222989342338030813533627661428280644448"
-            + "6645238749303589072962904915604407723907138105158593079608667017242712188399879"
-            + "7908792274921901699720888093776657273330010533678812202354218097512545405947522"
-            + "4352584907711670556013604839586446706324415722155397536978179778461740649551492"
-            + "9086256932197846862248283972241375657056057490261407972968652414535100474821663"
-            + "7048440319989000889524345065854122758866688116427171479924442928230863465674813"
-            + "9191231628245861786645835912456652947654568284891288314260769004224219022671055"
-            + "6263211111093705442175069416589604080719840385096245544436298123098787992724428"
-            + "4909188845801561660979191338754992005240636899125607176060588611646710940507754"
-            + "100225698315520005593572972571636269561882670428252483600823257530420752963450";
+    // the number of adjacent values specified in the problem
     private static final int ADJACENT_VALUES = 13;
 
-    public static void main(String[] args) {
+    // conversion from nanoseconds to seconds
+    private static final long TIME_CONVERSION = 1000000000;
 
-        long startTime = System.nanoTime();
+    // answer prompt
+    private static final String ANSWER = "The maximum product in this 1000 digit number is: ";
+    // time take to solve the problem
+    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+
+    // input file
+    private static final File INPUT_FILE = new File("./Problem_08_Input.txt");
+
+    /**
+     * The main method executes the solution and prints it alongside the time taken
+     * to solve the program.
+     * 
+     * @param args The arguments given to the main method
+     * @return None
+     */
+    public static void main(String[] args) throws FileNotFoundException {
+        // end time of the program
+        long endTime;
+        // solution for the problem
+        long solution;
+        // start time of the program
+        long startTime;
+
+        startTime = System.nanoTime();
+        solution = findMaxProduct(getInputNum(INPUT_FILE), ADJACENT_VALUES);
+        endTime = System.nanoTime();
+
+        // print answer and time taken
+        System.out.println(ANSWER + solution);
+        System.out.printf(TIME_TAKEN, (double) (endTime - startTime) / TIME_CONVERSION);
+    }
+
+    /**
+     * This method finds the maximum product of n adjacent values given the input.
+     * 
+     * @param input The input for the search
+     * @param adjacent The number of adjacent values for the product
+     * @return The maximum product of n adjacent values in a string of numbers
+     */
+    private static long findMaxProduct(int[] input, int adjacent) {
+        // the maximum product
         long maximum_product = 0;
-        // Calculate answer using substring
-        for (int counter = 0; counter <= INPUT.length() - ADJACENT_VALUES; counter++) {
-            long product = 1;
-            for (int counterTwo = counter; counterTwo <= counter + ADJACENT_VALUES - 1; counterTwo++) {
-                product *= Integer.parseInt("" + INPUT.charAt(counterTwo));
+        // the individual products of the adjacent digits
+        long product = 1;
+
+        // Calculate answer using the digits in the array
+        for (int counter = 0; counter <= input.length - ADJACENT_VALUES; counter++) {
+            product = 1;
+            for (int counterTwo = counter; counterTwo < counter + ADJACENT_VALUES; counterTwo++) {
+                product *= input[counterTwo];
             }
             if (product > maximum_product) {
                 maximum_product = product;
             }
         }
-        long finishTime = System.nanoTime();
-        double timeTaken = (double) (finishTime - startTime);
-        System.out.println(ANSWER + maximum_product);
-        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
+        return maximum_product;
+    }
+
+    /**
+     * This methods gets the input from a file.
+     * 
+     * @param inputFile The input file used for the problem
+     * @return An array containing the digits of the input
+     * @throws FileNotFoundException
+     */
+    private static int[] getInputNum(File inputFile) throws FileNotFoundException {
+        // the input in the file
+        String input = "";
+        // the array containing each digit in the file
+        int[] inputNum;
+        // the scanner used to read the file
+        Scanner scan = new Scanner(inputFile);
+
+        // reads the file and gets all the digits
+        while (scan.hasNextLine()) {
+            input = input + scan.next();
+        }
+        scan.close();
+
+        // fill int array with digits
+        inputNum = new int[input.length()];
+        for (int index = 0; index < inputNum.length; index++) {
+            inputNum[index] = Character.getNumericValue(input.charAt(index));
+        }
+
+        return inputNum;
     }
 }
