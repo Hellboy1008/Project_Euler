@@ -1,54 +1,111 @@
 
-//龍ONE
+/**
+ * Created by: 龍ONE 
+ * Date Created: Jan 19, 2018
+ * Date Edited: June 1, 2019
+ * Purpose: Solution to Project Euler Problem 9
+ */
 
+/**
+ * This class contains a method that calculates the pythagorean triplet given
+ * the sum of the triplets. The main method executes the program.
+ */
 public class Problem_09 {
 
+    // divisor for halving
+    private static final int DIVISOR_HALF = 2;
+    // smallest prime number
+    private static final int SMALLEST_PRIME = 2;
+    // sum of the triplets
+    private static final int SUM_OF_TRIPLETS = 1000;
+
+    // conversion from nanoseconds to seconds
     private static final long TIME_CONVERSION = 1000000000;
-    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+
+    // answer prompt
     private static final String ANSWER = "The product of abc is: ";
-    private static final int SUM = 1000;
-    private static final int SUM_HALVED = SUM / 2;
-    private static final int SMALLEST_FACTOR = 2;
+    // time take to solve the problem
+    private static final String TIME_TAKEN = "Time Taken:%s seconds";
 
+    /**
+     * The main method executes the solution and prints it alongside the time taken
+     * to solve the program.
+     * 
+     * @param args The arguments given to the main method
+     * @return None
+     */
     public static void main(String[] args) {
+        // solution for the problem
+        int solution;
+        // end time of the program
+        long endTime;
+        // start time of the program
+        long startTime;
 
-        long startTime = System.nanoTime();
-        int m = 0;
-        int k = 0;
-        int product = 0;
+        startTime = System.nanoTime();
+        solution = findProductOfTriplets(SUM_OF_TRIPLETS);
+        endTime = System.nanoTime();
+
+        // print answer and time taken
+        System.out.println(ANSWER + solution);
+        System.out.printf(TIME_TAKEN, (double) (endTime - startTime) / TIME_CONVERSION);
+    }
+
+    /**
+     * This method finds the product of the triplets with a given sum using Euclid's
+     * Pythagorean Triplets theorem.
+     * 
+     * @param sum The sum of the triplets
+     * @return The product of the triplets
+     */
+    private static int findProductOfTriplets(int sum) {
+        // holds whether the calculations are completed
         boolean completed = false;
+
+        // product of the triplets
+        int product = 0;
+        // half of the sum
+        int sumHalved = sum / DIVISOR_HALF;
+        // variable "k" used in calculations
+        int varK = 0;
+
         // Calculate answer using Euclid's Pythagorean Triplets
-        for (m = SMALLEST_FACTOR; m < (int) Math.sqrt(SUM_HALVED) + 1; m++) {
-            if (SUM_HALVED % m == 0) {
-                if (m % SMALLEST_FACTOR == 0) {
-                    k = m + 1;
+        for (int varM = SMALLEST_PRIME; varM < Math.sqrt(sumHalved) + 1; varM++) {
+            if (sumHalved % varM == 0) {
+                if (varM % SMALLEST_PRIME == 0) {
+                    varK = varM + 1;
                 } else {
-                    k = m + SMALLEST_FACTOR;
+                    varK = varM + SMALLEST_PRIME;
                 }
-                while (k < SMALLEST_FACTOR * m && k <= SUM_HALVED * m) {
-                    if (SUM_HALVED * m % k == 0 && gcd(k, m) == 1) {
-                        product = (SUM_HALVED * (SMALLEST_FACTOR * m - k) / m) * (SUM * (k - m) / k)
-                                * (SUM_HALVED * (k * k - SMALLEST_FACTOR * k * m + SMALLEST_FACTOR * m * m) / (m * k));
+                while (varK < SMALLEST_PRIME * varM && varK <= sumHalved * varM) {
+                    if (sumHalved * varM % varK == 0 && gcd(varK, varM) == 1) {
+                        product = (sum - (sumHalved * varK) / varM) * (sum - (sum * varM) / varK)
+                                * (-1 * sum + (sumHalved * varK) / varM + (sum * varM) / varK);
                         completed = true;
                         break;
                     }
-                    k += SMALLEST_FACTOR;
+                    varK += SMALLEST_PRIME;
                 }
             }
             if (completed == true) {
                 break;
             }
         }
-        long finishTime = System.nanoTime();
-        double timeTaken = (double) (finishTime - startTime);
-        System.out.println(ANSWER + product);
-        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
+
+        return product;
     }
 
-    private static int gcd(int a, int b) {
-        if (b == 0) {
-            return a;
+    /**
+     * This method returns the greatest common divisor between two numbers.
+     * 
+     * @param numOne The first number
+     * @param numTwo The second number
+     * @return The greatest common divisor between the two numbers
+     */
+    private static int gcd(int numOne, int numTwo) {
+        if (numTwo == 0) {
+            return numOne;
         }
-        return gcd(b, a % b);
+        return gcd(numTwo, numOne % numTwo);
     }
 }
