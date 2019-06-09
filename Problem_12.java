@@ -1,37 +1,93 @@
 
-//龍ONE
+/**
+ * Created by: 龍ONE 
+ * Date Created: Jan 22, 2018
+ * Date Edited: June 9, 2019
+ * Purpose: Solution to Project Euler Problem 12
+ */
 
+/**
+ * This class contains a method that calculates the first triangle number with n
+ * divisors. The main method executes the program.
+ */
 public class Problem_12 {
 
-    private static final long TIME_CONVERSION = 1000000000;
-    private static final String TIME_TAKEN = "Time Taken:%s seconds";
-    private static final String ANSWER = "The first triangle number to have over 500 divisors is: ";
+    // divisor for dividing in half
     private static final int HALF = 2;
+    // multiplier for multiplying by 2
+    private static final int MULTIPLIER_TWO = 2;
+    // number of factors
     private static final int TARGET_FACTORS = 500;
 
-    public static void main(String[] args) {
+    // conversion from nanoseconds to seconds
+    private static final long TIME_CONVERSION = 1000000000;
 
-        long startTime = System.nanoTime();
-        int answer = 0;
+    // answer prompt
+    private static final String ANSWER = "The first triangle number to have over 500 divisors is: ";
+    // time take to solve the problem
+    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+
+    /**
+     * The main method executes the solution and prints it alongside the time taken
+     * to solve the program.
+     * 
+     * @param args The arguments given to the main method
+     * @return None
+     */
+    public static void main(String[] args) {
+        // solution for the problem
+        int solution;
+        // end time of the program
+        long endTime;
+        // start time of the program
+        long startTime;
+
+        startTime = System.nanoTime();
+        solution = findTriangleNumber(TARGET_FACTORS);
+        endTime = System.nanoTime();
+
+        // print answer and time taken
+        System.out.println(ANSWER + solution);
+        System.out.printf(TIME_TAKEN, (double) (endTime - startTime) / TIME_CONVERSION);
+    }
+
+    /**
+     * This method finds the first triangle number with n factors.
+     * 
+     * @param numOfFactors The number of factors
+     * @return The first triangle number with n factors
+     */
+    private static int findTriangleNumber(int numOfFactors) {
+        // value for whether the triangle number is found
         boolean found = false;
+        // index used to calculate triangle number
         int index = 1;
-        // Find triangle number
+        // triangle number
+        int triangle_number = 0;
+
+        // find triangle number
         while (found == false) {
-            int triangle_number = index * (index + 1) / HALF;
-            if (countFactors(triangle_number) >= TARGET_FACTORS) {
+            triangle_number = index * (index + 1) / HALF;
+            if (countFactors(triangle_number) >= numOfFactors) {
                 found = true;
-                answer = triangle_number;
             }
             index++;
         }
-        long finishTime = System.nanoTime();
-        double timeTaken = (double) (finishTime - startTime);
-        System.out.println(ANSWER + answer);
-        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
+
+        return triangle_number;
     }
 
+    /**
+     * This method counts the number of factors for an integer.
+     * 
+     * @param number The number being checked
+     * @return The total number of factors of a number
+     */
     private static int countFactors(int number) {
+        // number of factors
         int factors = 0;
+
+        // count factors
         for (int counter = 1; counter <= Math.sqrt(number); counter++) {
             if (Math.sqrt(number) <= TARGET_FACTORS / HALF) {
                 break;
@@ -40,6 +96,7 @@ public class Problem_12 {
                 factors++;
             }
         }
-        return factors + factors;
+        
+        return factors * MULTIPLIER_TWO;
     }
 }
