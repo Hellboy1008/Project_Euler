@@ -1,84 +1,158 @@
 
-//龍ONE
+/**
+ * Created by: 龍ONE 
+ * Date Created: Jan 22, 2018
+ * Date Edited: June 9, 2019
+ * Purpose: Solution to Project Euler Problem 11
+ */
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+/**
+ * This class contains a method that calculates the maximum product in a grid.
+ * The main method executes the program.
+ */
 public class Problem_11 {
 
+    // number of adjacent numbers
+    private static final int ADJACENT_NUM = 4;
+
+    // conversion from nanoseconds to seconds
     private static final long TIME_CONVERSION = 1000000000;
-    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+
+    // answer prompt
     private static final String ANSWER = "The greatest product is: ";
-    private static final int[][] grid = { { 8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8 },
-            { 49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0 },
-            { 81, 49, 31, 73, 55, 79, 14, 29, 93, 71, 40, 67, 53, 88, 30, 3, 49, 13, 36, 65 },
-            { 52, 70, 95, 23, 4, 60, 11, 42, 69, 24, 68, 56, 1, 32, 56, 71, 37, 2, 36, 91 },
-            { 22, 31, 16, 71, 51, 67, 63, 89, 41, 92, 36, 54, 22, 40, 40, 28, 66, 33, 13, 80 },
-            { 24, 47, 32, 60, 99, 3, 45, 2, 44, 75, 33, 53, 78, 36, 84, 20, 35, 17, 12, 50 },
-            { 32, 98, 81, 28, 64, 23, 67, 10, 26, 38, 40, 67, 59, 54, 70, 66, 18, 38, 64, 70 },
-            { 67, 26, 20, 68, 2, 62, 12, 20, 95, 63, 94, 39, 63, 8, 40, 91, 66, 49, 94, 21 },
-            { 24, 55, 58, 5, 66, 73, 99, 26, 97, 17, 78, 78, 96, 83, 14, 88, 34, 89, 63, 72 },
-            { 21, 36, 23, 9, 75, 0, 76, 44, 20, 45, 35, 14, 0, 61, 33, 97, 34, 31, 33, 95 },
-            { 78, 17, 53, 28, 22, 75, 31, 67, 15, 94, 3, 80, 4, 62, 16, 14, 9, 53, 56, 92 },
-            { 16, 39, 5, 42, 96, 35, 31, 47, 55, 58, 88, 24, 0, 17, 54, 24, 36, 29, 85, 57 },
-            { 86, 56, 0, 48, 35, 71, 89, 7, 5, 44, 44, 37, 44, 60, 21, 58, 51, 54, 17, 58 },
-            { 19, 80, 81, 68, 5, 94, 47, 69, 28, 73, 92, 13, 86, 52, 17, 77, 4, 89, 55, 40 },
-            { 4, 52, 8, 83, 97, 35, 99, 16, 7, 97, 57, 32, 16, 26, 26, 79, 33, 27, 98, 66 },
-            { 88, 36, 68, 87, 57, 62, 20, 72, 3, 46, 33, 67, 46, 55, 12, 32, 63, 93, 53, 69 },
-            { 4, 42, 16, 73, 38, 25, 39, 11, 24, 94, 72, 18, 8, 46, 29, 32, 40, 62, 76, 36 },
-            { 20, 69, 36, 41, 72, 30, 23, 88, 34, 62, 99, 69, 82, 67, 59, 85, 74, 4, 36, 16 },
-            { 20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54 },
-            { 1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48 } };
-    private static final int ADJACENT_NUMBERS_INDEX = 3;
+    // time take to solve the problem
+    private static final String TIME_TAKEN = "Time Taken:%s seconds";
 
-    public static void main(String[] args) {
+    // input file
+    private static final File INPUT_FILE = new File("./Problem_11_Input.txt");
 
-        long startTime = System.nanoTime();
+    /**
+     * The main method executes the solution and prints it alongside the time taken
+     * to solve the program.
+     * 
+     * @param args The arguments given to the main method
+     * @return None
+     */
+    public static void main(String[] args) throws FileNotFoundException {
+        // solution for the problem
+        int solution;
+        // end time of the program
+        long endTime;
+        // start time of the program
+        long startTime;
+
+        startTime = System.nanoTime();
+        solution = findMaxProduct(getGrid(INPUT_FILE), ADJACENT_NUM);
+        endTime = System.nanoTime();
+
+        // print answer and time taken
+        System.out.println(ANSWER + solution);
+        System.out.printf(TIME_TAKEN, (double) (endTime - startTime) / TIME_CONVERSION);
+    }
+
+    /**
+     * This method reads a file with the grid and returns the grid as a 2D array.
+     * 
+     * @param inputFile The file being read
+     * @return The grid as a 2D array
+     */
+    private static int[][] getGrid(File inputFile) throws FileNotFoundException {
+        // number of lines in file
+        int numOfLines = 0;
+        // grid read from the file
+        int[][] grid;
+        // the scanner used to read the file
+        Scanner scan = new Scanner(inputFile);
+
+        // read the number of lines in file
+        while (scan.hasNextLine() == true) {
+            numOfLines++;
+            scan.nextLine();
+        }
+        scan.close();
+
+        // create grid
+        grid = new int[numOfLines][numOfLines];
+
+        // put numbers into grid
+        scan = new Scanner(inputFile);
+        while (scan.hasNextLine() == true) {
+            for (int row = 0; row < grid.length; row++) {
+                for (int col = 0; col < grid[row].length; col++) {
+                    grid[row][col] = scan.nextInt();
+                }
+            }
+        }
+        scan.close();
+
+        return grid;
+    }
+
+    /**
+     * This method returns the maximum product of n adjacent values in a grid.
+     * 
+     * @param grid The grid with the values
+     * @return The maximum product of n adjacent values in the grid
+     */
+    private static int findMaxProduct(int[][] grid, int adjacentValues) {
+        // maximum product in grid
+        int maxProduct = 0;
+        // product of each adjacent value
         int product = 0;
-        int maximum_product = 0;
+
+        // decrement adjacent values by one to match index
+        adjacentValues--;
 
         // Check for largest product upwards/downwards
-        for (int row = ADJACENT_NUMBERS_INDEX; row < grid.length - ADJACENT_NUMBERS_INDEX; row++) {
+        for (int row = adjacentValues; row < grid.length - adjacentValues; row++) {
             for (int column = 0; column < grid[0].length; column++) {
-                product = grid[row][column] * grid[row + 1][column] * grid[row + (ADJACENT_NUMBERS_INDEX - 1)][column]
-                        * grid[row + ADJACENT_NUMBERS_INDEX][column];
-                if (product > maximum_product) {
-                    maximum_product = product;
+                product = grid[row][column] * grid[row + 1][column] * grid[row + (adjacentValues - 1)][column]
+                        * grid[row + adjacentValues][column];
+                if (product > maxProduct) {
+                    maxProduct = product;
                 }
             }
         }
+
         // Check for largest product left/right
         for (int row = 0; row < grid.length; row++) {
-            for (int column = ADJACENT_NUMBERS_INDEX; column < grid[0].length - ADJACENT_NUMBERS_INDEX; column++) {
-                product = grid[row][column] * grid[row][column - 1] * grid[row][column - (ADJACENT_NUMBERS_INDEX - 1)]
-                        * grid[row][column - ADJACENT_NUMBERS_INDEX];
-                if (product > maximum_product) {
-                    maximum_product = product;
+            for (int column = adjacentValues; column < grid[0].length - adjacentValues; column++) {
+                product = grid[row][column] * grid[row][column - 1] * grid[row][column - (adjacentValues - 1)]
+                        * grid[row][column - adjacentValues];
+                if (product > maxProduct) {
+                    maxProduct = product;
                 }
             }
         }
+
         // Check for largest product diagonally (diagonal from left -> \)
-        for (int row = 0; row < grid.length - ADJACENT_NUMBERS_INDEX; row++) {
-            for (int column = 0; column < grid[0].length - ADJACENT_NUMBERS_INDEX; column++) {
+        for (int row = 0; row < grid.length - adjacentValues; row++) {
+            for (int column = 0; column < grid[0].length - adjacentValues; column++) {
                 product = grid[row][column] * grid[row + 1][column + 1]
-                        * grid[row + (ADJACENT_NUMBERS_INDEX - 1)][column + (ADJACENT_NUMBERS_INDEX - 1)]
-                        * grid[row + ADJACENT_NUMBERS_INDEX][column + ADJACENT_NUMBERS_INDEX];
-                if (product > maximum_product) {
-                    maximum_product = product;
+                        * grid[row + (adjacentValues - 1)][column + (adjacentValues - 1)]
+                        * grid[row + adjacentValues][column + adjacentValues];
+                if (product > maxProduct) {
+                    maxProduct = product;
                 }
             }
         }
+
         // Check for largest product diagonally (diagonal from right -> /)
-        for (int row = 0; row < grid.length - ADJACENT_NUMBERS_INDEX; row++) {
-            for (int column = grid[0].length - 1; column > (ADJACENT_NUMBERS_INDEX - 1); column--) {
+        for (int row = 0; row < grid.length - adjacentValues; row++) {
+            for (int column = grid[0].length - 1; column > (adjacentValues - 1); column--) {
                 product = grid[row][column] * grid[row + 1][column - 1]
-                        * grid[row + (ADJACENT_NUMBERS_INDEX - 1)][column - (ADJACENT_NUMBERS_INDEX - 1)]
-                        * grid[row + ADJACENT_NUMBERS_INDEX][column - ADJACENT_NUMBERS_INDEX];
-                if (product > maximum_product) {
-                    maximum_product = product;
+                        * grid[row + (adjacentValues - 1)][column - (adjacentValues - 1)]
+                        * grid[row + adjacentValues][column - adjacentValues];
+                if (product > maxProduct) {
+                    maxProduct = product;
                 }
             }
         }
-        long finishTime = System.nanoTime();
-        double timeTaken = (double) (finishTime - startTime);
-        System.out.println(ANSWER + maximum_product);
-        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
+
+        return maxProduct;
     }
 }
