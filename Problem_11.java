@@ -55,44 +55,6 @@ public class Problem_11 {
     }
 
     /**
-     * This method reads a file with the grid and returns the grid as a 2D array.
-     * 
-     * @param inputFile The file being read
-     * @return The grid as a 2D array
-     */
-    private static int[][] getGrid(File inputFile) throws FileNotFoundException {
-        // number of lines in file
-        int numOfLines = 0;
-        // grid read from the file
-        int[][] grid;
-        // the scanner used to read the file
-        Scanner scan = new Scanner(inputFile);
-
-        // read the number of lines in file
-        while (scan.hasNextLine() == true) {
-            numOfLines++;
-            scan.nextLine();
-        }
-        scan.close();
-
-        // create grid
-        grid = new int[numOfLines][numOfLines];
-
-        // put numbers into grid
-        scan = new Scanner(inputFile);
-        while (scan.hasNextLine() == true) {
-            for (int row = 0; row < grid.length; row++) {
-                for (int col = 0; col < grid[row].length; col++) {
-                    grid[row][col] = scan.nextInt();
-                }
-            }
-        }
-        scan.close();
-
-        return grid;
-    }
-
-    /**
      * This method returns the maximum product of n adjacent values in a grid.
      * 
      * @param grid The grid with the values
@@ -154,5 +116,43 @@ public class Problem_11 {
         }
 
         return maxProduct;
+    }
+
+    /**
+     * This method reads a file with the grid and returns the grid as a 2D array.
+     * 
+     * @param inputFile The file being read
+     * @return The grid as a 2D array
+     */
+    private static int[][] getGrid(File inputFile) throws FileNotFoundException {
+        // number of lines in file
+        int numOfLines = 0;
+        // grid read from the file
+        int[][] grid;
+        // the scanner used to read the file
+        Scanner scan = new Scanner(inputFile);
+
+        // read the number of lines in file
+        while (scan.hasNextLine() == true) {
+            numOfLines++;
+            scan.nextLine();
+        }
+        scan.close();
+
+        // create grid
+        grid = new int[numOfLines][numOfLines];
+
+        // put numbers into grid
+        scan = new Scanner(inputFile);
+        while (scan.hasNextLine() == true) {
+            for (int row = 0; row < grid.length; row++) {
+                for (int col = 0; col < grid[row].length; col++) {
+                    grid[row][col] = scan.nextInt();
+                }
+            }
+        }
+        scan.close();
+
+        return grid;
     }
 }

@@ -52,6 +52,29 @@ public class Problem_12 {
     }
 
     /**
+     * This method counts the number of factors for an integer.
+     * 
+     * @param number The number being checked
+     * @return The total number of factors of a number
+     */
+    private static int countFactors(int number) {
+        // number of factors
+        int factors = 0;
+
+        // count factors
+        for (int counter = 1; counter <= Math.sqrt(number); counter++) {
+            if (Math.sqrt(number) <= TARGET_FACTORS / HALF) {
+                break;
+            }
+            if (number % counter == 0) {
+                factors++;
+            }
+        }
+
+        return factors * MULTIPLIER_TWO;
+    }
+
+    /**
      * This method finds the first triangle number with n factors.
      * 
      * @param numOfFactors The number of factors
@@ -75,28 +98,5 @@ public class Problem_12 {
         }
 
         return triangle_number;
-    }
-
-    /**
-     * This method counts the number of factors for an integer.
-     * 
-     * @param number The number being checked
-     * @return The total number of factors of a number
-     */
-    private static int countFactors(int number) {
-        // number of factors
-        int factors = 0;
-
-        // count factors
-        for (int counter = 1; counter <= Math.sqrt(number); counter++) {
-            if (Math.sqrt(number) <= TARGET_FACTORS / HALF) {
-                break;
-            }
-            if (number % counter == 0) {
-                factors++;
-            }
-        }
-        
-        return factors * MULTIPLIER_TWO;
     }
 }
