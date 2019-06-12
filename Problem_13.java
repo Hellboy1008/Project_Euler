@@ -1,6 +1,15 @@
 
-//龍ONE
+/**
+ * Created by: 龍ONE 
+ * Date Created: Jan 23, 2018
+ * Date Edited: June 11, 2019
+ * Purpose: Solution to Project Euler Problem 13
+ */
 
+/**
+ * This class contains a method that calculates the the first ten digits of the
+ * sum of n 50 digit numbers. The main method executes the program.
+ */
 public class Problem_13 {
 
     private static final long TIME_CONVERSION = 1000000000;
