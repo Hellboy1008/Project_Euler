@@ -1,27 +1,74 @@
 
-//龍ONE
+/**
+ * Created by: 龍ONE 
+ * Date Created: December 22, 2018
+ * Date Edited: June 12, 2019
+ * Purpose: Solution to Project Euler Problem 15
+ */
 
+/**
+ * This class contains a method that calculates the number of possible routes in
+ * a square grid. The main method executes the program.
+ */
 public class Problem_15 {
 
-    private static final long TIME_CONVERSION = 1000000000;
-    private static final String TIME_TAKEN = "Time Taken:%s seconds";
-    private static final String ANSWER = "The total number of routes is: ";
+    // size of the grid in the problem
     private static final int GRID_SIZE = 20;
 
+    // conversion from nanoseconds to seconds
+    private static final long TIME_CONVERSION = 1000000000;
+
+    // answer prompt
+    private static final String ANSWER = "The total number of routes is: ";
+    // time take to solve the problem
+    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+
+    /**
+     * The main method executes the solution and prints it alongside the time taken
+     * to solve the program.
+     * 
+     * @param args The arguments given to the main method
+     * @return None
+     */
     public static void main(String[] args) {
-        long startTime = System.nanoTime();
-        double answer = factorial(GRID_SIZE + GRID_SIZE) / (factorial(GRID_SIZE) * factorial(GRID_SIZE));
-        long finishTime = System.nanoTime();
-        double timeTaken = (double) (finishTime - startTime);
-        System.out.println(ANSWER + answer);
-        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
+        // end time of the program
+        long endTime;
+        // solution for the problem
+        long solution;
+        // start time of the program
+        long startTime;
+
+        startTime = System.nanoTime();
+        solution = (long) gridRoutes(GRID_SIZE);
+        endTime = System.nanoTime();
+
+        // print answer and time taken
+        System.out.println(ANSWER + solution);
+        System.out.printf(TIME_TAKEN, (double) (endTime - startTime) / TIME_CONVERSION);
     }
 
-    private static double factorial(double value) {
-        if (value == 1) {
+    /**
+     * This method finds the factorial of a number.
+     * 
+     * @param value The number in question
+     * @return The factorial for the number
+     */
+    private static double factorial(double number) {
+        if (number == 1) {
             return 1;
         } else {
-            return value * factorial(value - 1);
+            return number * factorial(number - 1);
         }
     }
+
+    /**
+     * This method finds the total number of grid routes possible for a square grid.
+     * 
+     * @param gridSize The size of the grid
+     * @return The total possible routes of a square grid
+     */
+    private static double gridRoutes(double gridSize) {
+        return factorial(GRID_SIZE + GRID_SIZE) / (factorial(GRID_SIZE) * factorial(GRID_SIZE));
+    }
+
 }
