@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Jan 15, 2018
- * Date Edited: May 23, 2019
+ * Date Edited: June 28, 2020
  * Purpose: Solution to Project Euler Problem 8
  */
 
@@ -57,7 +57,7 @@ public class Problem_08 {
     /**
      * This method finds the maximum product of n adjacent values given the input.
      * 
-     * @param input The input for the search
+     * @param input    The input for the search
      * @param adjacent The number of adjacent values for the product
      * @return The maximum product of n adjacent values in a string of numbers
      */
@@ -77,6 +77,7 @@ public class Problem_08 {
                 maximum_product = product;
             }
         }
+
         return maximum_product;
     }
 

@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Jan 19, 2018
- * Date Edited: June 1, 2019
+ * Date Edited: June 28, 2020
  * Purpose: Solution to Project Euler Problem 9
  */
 
@@ -103,9 +103,12 @@ public class Problem_09 {
      * @return The greatest common divisor between the two numbers
      */
     private static int gcd(int numOne, int numTwo) {
+
+        // base case for recursion
         if (numTwo == 0) {
             return numOne;
         }
+
         return gcd(numTwo, numOne % numTwo);
     }
 }

@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Oct 12, 2017
- * Date Edited: May 16, 2019
+ * Date Edited: June 28, 2020
  * Purpose: Solution to Project Euler Problem 3
  */
 
@@ -62,6 +62,7 @@ public class Problem_03 {
                 return false;
             }
         }
+
         return true;
     }
 
@@ -78,6 +79,7 @@ public class Problem_03 {
                 target = target / factor;
             }
         }
+
         return target;
     }
 }

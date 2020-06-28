@@ -1,28 +1,84 @@
 
-//龍ONE
+/**
+ * Created by: 龍ONE 
+ * Date Created: December 22, 2018
+ * Date Edited: June 28, 2020
+ * Purpose: Solution to Project Euler Problem 16
+ */
+
+/**
+ * This class contains a method that calculates the sum of the digits of a number 
+ * raised to another number. The main method executes the program.
+ */
 
 import java.math.BigInteger;
 
 public class Problem_16 {
 
-    private static final long TIME_CONVERSION = 1000000000;
-    private static final String TIME_TAKEN = "Time Taken:%s seconds";
-    private static final String ANSWER = "The sum of the digits of 2^1000 is: ";
-    private static final int POWER = 1000;
+    // the base in question
+    private static final int BASE = 2;
+    // the exponent in question
+    private static final int EXPONENT = 1000;
 
+    // conversion from nanoseconds to seconds
+    private static final long TIME_CONVERSION = 1000000000;
+
+    // answer prompt
+    private static final String ANSWER = "The sum of the digits of 2^1000 is: ";
+    // time take to solve the problem
+    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+
+    /**
+     * The main method executes the solution and prints it alongside the time taken
+     * to solve the program.
+     * 
+     * @param args The arguments given to the main method
+     * @return None
+     */
     public static void main(String[] args) {
-        long startTime = System.nanoTime();
-        BigInteger value = BigInteger.ONE.add(BigInteger.ONE);
-        value = value.pow(POWER);
-        String power = value.toString();
-        int answer = 0;
-        for (int index = 0; index < power.length(); index++) {
-            answer += Character.getNumericValue(power.charAt(index));
+        // solution for the problem
+        int solution;
+        // end time of the program
+        long endTime;
+        // start time of the program
+        long startTime;
+
+        startTime = System.nanoTime();
+        solution = digitSumPower(BASE, EXPONENT);
+        endTime = System.nanoTime();
+
+        // print answer and time taken
+        System.out.println(ANSWER + solution);
+        System.out.printf(TIME_TAKEN, (double) (endTime - startTime) / TIME_CONVERSION);
+    }
+
+    /**
+     * Calculates the sum of the digits of a number raised to another number.
+     * 
+     * @param base     The base in question
+     * @param exponent The exponent in question
+     * @return The sum of the digits of the base raised to the exponent.
+     */
+    private static int digitSumPower(int base, int exponent) {
+        // sum of the digits of resulting value
+        int sum = 0;
+        // string representation of the resulting value
+        String result_val;
+        // BigInteger value for base
+        BigInteger bigIntBase = BigInteger.valueOf(base);
+        // BigInteger value for resulting value
+        BigInteger solution;
+
+        solution = bigIntBase;
+        solution = solution.pow(exponent);
+        result_val = solution.toString();
+
+        // add the digits one at a time
+        for (int index = 0; index < result_val.length(); index++) {
+            sum += Character.getNumericValue(result_val.charAt(index));
         }
-        long finishTime = System.nanoTime();
-        double timeTaken = (double) (finishTime - startTime);
-        System.out.println(ANSWER + answer);
-        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
+
+        return sum;
     }
 
 }

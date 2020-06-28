@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: December 22, 2018
- * Date Edited: June 12, 2019
+ * Date Edited: June 28, 2020
  * Purpose: Solution to Project Euler Problem 15
  */
 
@@ -54,11 +54,12 @@ public class Problem_15 {
      * @return The factorial for the number
      */
     private static double factorial(double number) {
+        // base case for recursion
         if (number == 1) {
             return 1;
-        } else {
-            return number * factorial(number - 1);
         }
+
+        return number * factorial(number - 1);
     }
 
     /**
@@ -68,7 +69,7 @@ public class Problem_15 {
      * @return The total possible routes of a square grid
      */
     private static double gridRoutes(double gridSize) {
-        return factorial(GRID_SIZE + GRID_SIZE) / (factorial(GRID_SIZE) * factorial(GRID_SIZE));
+        return factorial(gridSize + gridSize) / (factorial(gridSize) * factorial(gridSize));
     }
 
 }

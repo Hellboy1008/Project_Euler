@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Jan 3, 2018
- * Date Edited: May 22, 2019
+ * Date Edited: June 28, 2020
  * Purpose: Solution to Project Euler Problem 7
  */
 
@@ -84,6 +84,7 @@ public class Problem_07 {
                 return index;
             }
         }
+
         return 0;
     }
 }
