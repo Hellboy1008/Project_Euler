@@ -1,25 +1,71 @@
 
-//龍ONE
+/**
+ * Created by: 龍ONE 
+ * Date Created: December 25, 2018
+ * Date Edited: June 29, 2020
+ * Purpose: Solution to Project Euler Problem 18
+ */
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+/**
+ * This class contains a method that finds the maximum total from top to bottom
+ * of a pyramid containing numbers. The main method executes the program.
+ */
 public class Problem_18 {
 
+    // conversion from nanoseconds to seconds
     private static final long TIME_CONVERSION = 1000000000;
-    private static final String TIME_TAKEN = "Time Taken:%s seconds";
-    private static final String ANSWER = "The maximum total from top to bottom is: ";
-    private static final int[][] pyramid = { { 75 }, { 95, 64 }, { 17, 42, 82 }, { 18, 35, 87, 10 },
-            { 20, 4, 82, 47, 65 }, { 19, 1, 23, 75, 3, 34 }, { 88, 2, 77, 73, 7, 63, 67 },
-            { 99, 65, 4, 28, 6, 16, 70, 92 }, { 41, 41, 26, 56, 83, 40, 80, 70, 33 },
-            { 41, 48, 72, 33, 47, 32, 37, 16, 94, 29 }, { 53, 71, 44, 65, 25, 43, 91, 52, 97, 51, 14 },
-            { 70, 11, 33, 28, 77, 73, 17, 78, 39, 68, 17, 57 }, { 91, 71, 52, 38, 17, 14, 91, 43, 58, 50, 27, 29, 48 },
-            { 63, 66, 4, 68, 89, 53, 67, 30, 73, 16, 69, 87, 40, 31 },
-            { 4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23 } };
-    private static final int SECOND_LAST_ROW = 2;
 
-    public static void main(String[] args) {
-        long startTime = System.nanoTime();
-        int answer;
-        for (int indexOne = pyramid.length - SECOND_LAST_ROW; indexOne > 0; indexOne--) {
+    // answer prompt
+    private static final String ANSWER = "The maximum total from top to bottom is: ";
+    // time take to solve the problem
+    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+
+    // input file
+    private static final File INPUT_FILE = new File("./Problem_18_Input.txt");
+
+    /**
+     * The main method executes the solution and prints it alongside the time taken
+     * to solve the program.
+     * 
+     * @param args The arguments given to the main method
+     * @return None
+     * @throws FileNotFoundException Throws error if file not found
+     */
+    public static void main(String[] args) throws FileNotFoundException {
+        // solution for the problem
+        int solution;
+        // end time of the program
+        long endTime;
+        // start time of the program
+        long startTime;
+
+        startTime = System.nanoTime();
+        solution = findMaxTotal(getPyramid(INPUT_FILE));
+        endTime = System.nanoTime();
+
+        // print answer and time taken
+        System.out.println(ANSWER + solution);
+        System.out.printf(TIME_TAKEN, (double) (endTime - startTime) / TIME_CONVERSION);
+    }
+
+    /**
+     * Finds the maximum total from the top to the bottom of a pyramid.
+     * 
+     * @param pyramid The pyramid in question
+     * @return The maximum total from the top to the bottom
+     */
+    private static int findMaxTotal(int[][] pyramid) {
+        // max total
+        int max;
+
+        // shrink the pyramid by adding the max values from the bottom of the pyramid
+        for (int indexOne = pyramid.length - 1 - 1; indexOne > 0; indexOne--) {
             for (int indexTwo = 0; indexTwo < pyramid[indexOne].length; indexTwo++) {
+                // add the value that is the larger of the two possible outcomes
                 if (pyramid[indexOne][indexTwo] + pyramid[indexOne + 1][indexTwo] > pyramid[indexOne][indexTwo]
                         + pyramid[indexOne + 1][indexTwo + 1]) {
                     pyramid[indexOne][indexTwo] = pyramid[indexOne][indexTwo] + pyramid[indexOne + 1][indexTwo];
@@ -28,16 +74,59 @@ public class Problem_18 {
                 }
             }
         }
+
         // calculate largest sum
         if (pyramid[1][0] > pyramid[1][1]) {
-            answer = pyramid[0][0] + pyramid[1][0];
+            max = pyramid[0][0] + pyramid[1][0];
         } else {
-            answer = pyramid[0][0] + pyramid[1][1];
+            max = pyramid[0][0] + pyramid[1][1];
         }
-        long finishTime = System.nanoTime();
-        double timeTaken = (double) (finishTime - startTime);
-        System.out.println(ANSWER + answer);
-        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
+
+        return max;
+    }
+
+    /**
+     * This method gets the pyramid from the file.
+     * 
+     * @param inputFile The file being read
+     * @return A 2d array containing the pyramid
+     * @throws FileNotFoundException Throws error if file not found
+     */
+    private static int[][] getPyramid(File inputFile) throws FileNotFoundException {
+        // number of lines in file
+        int numOfLines = 0;
+        // temp array for each column in pyramid
+        int[] temp;
+        // the pyramid
+        int[][] pyramid;
+        // the scanner used to read the file
+        Scanner scan = new Scanner(inputFile);
+
+        // read the number of lines in file
+        while (scan.hasNextLine() == true) {
+            numOfLines++;
+            scan.nextLine();
+        }
+        scan.close();
+
+        // create pyramid array and new scanner
+        pyramid = new int[numOfLines][];
+        scan = new Scanner(inputFile);
+
+        // add the numbers in the file into the pyramid
+        for (int indexOne = 0; indexOne < pyramid.length; indexOne++) {
+            temp = new int[indexOne + 1];
+            // read the integers in the row
+            for (int indexTwo = 0; indexTwo < temp.length; indexTwo++) {
+                temp[indexTwo] = scan.nextInt();
+            }
+            pyramid[indexOne] = temp;
+        }
+
+        // close scanner
+        scan.close();
+
+        return pyramid;
     }
 
 }

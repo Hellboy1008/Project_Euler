@@ -1,56 +1,125 @@
 
-//龍ONE
+/**
+ * Created by: 龍ONE 
+ * Date Created: January 16, 2019
+ * Date Edited: June 29, 2020
+ * Purpose: Solution to Project Euler Problem 21
+ */
 
 import java.util.ArrayList;
 
+/**
+ * This class contains a method that finds the sum of all amicable numbers under
+ * a certain number. The main method executes the program.
+ */
 public class Problem_21 {
 
-    private static final long TIME_CONVERSION = 1000000000;
-    private static final String TIME_TAKEN = "Time Taken:%s seconds";
-    private static final String ANSWER = "The sum of all the amicable numbers is:";
+    // lower bound for the question
     private static final int LOWER_BOUND = 2;
+    // upper bound for the question
     private static final int UPPER_BOUND = 10000;
-    private static ArrayList<Integer> sumOfAllFactors = new ArrayList<Integer>();
 
+    // conversion from nanoseconds to seconds
+    private static final long TIME_CONVERSION = 1000000000;
+
+    // answer prompt
+    private static final String ANSWER = "The sum of all the amicable numbers is: ";
+    // time take to solve the problem
+    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+
+    /**
+     * The main method executes the solution and prints it alongside the time taken
+     * to solve the program.
+     * 
+     * @param args The arguments given to the main method
+     * @return None
+     */
     public static void main(String[] args) {
-        long startTime = System.nanoTime();
-        int answer = 0;
-        // find sum of all factors
-        for (int number = LOWER_BOUND; number <= UPPER_BOUND; number++) {
-            calculateFactorSum(number);
-        }
-        // find amicable numbers
-        answer = sumOfAmicableNumbers(sumOfAllFactors);
-        long finishTime = System.nanoTime();
-        double timeTaken = (double) (finishTime - startTime);
-        System.out.println(ANSWER + answer);
-        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
+        // solution for the problem
+        int solution;
+        // end time of the program
+        long endTime;
+        // start time of the program
+        long startTime;
+
+        startTime = System.nanoTime();
+        solution = sumOfAmicableNumbers(createFactorSumArray(UPPER_BOUND), UPPER_BOUND);
+        endTime = System.nanoTime();
+
+        // print answer and time taken
+        System.out.println(ANSWER + solution);
+        System.out.printf(TIME_TAKEN, (double) (endTime - startTime) / TIME_CONVERSION);
+
     }
 
-    private static void calculateFactorSum(int input_number) {
+    /**
+     * Calculates the sum of the factors for the input number and adds it to the
+     * ArrayList.
+     * 
+     * @param allFactorSums The ArrayList to add the factor sum
+     * @param input_number  The number to find the factor sum for
+     * @return None
+     */
+    private static void calculateFactorSum(ArrayList<Integer> allFactorSums, int input_number) {
+        // the sum of the factors
         int factorSum = 0;
+
+        // find the factors between 1 and the square root of the number
         for (int counter = 1; counter <= Math.sqrt(input_number); counter++) {
+            // if the number is a factor
             if (input_number % counter == 0) {
                 factorSum += counter;
+                // add the other factor using division if applicable
                 if (counter != 1 && counter != (input_number / counter)) {
                     factorSum += (input_number / counter);
                 }
             }
         }
-        sumOfAllFactors.add(factorSum);
+        allFactorSums.add(factorSum);
     }
 
-    private static int sumOfAmicableNumbers(ArrayList allFactorSums) {
-        int totalSum = 0;
+    /**
+     * Creates an ArrayList with the sum of the factors for numbers between 2 and
+     * upperBound.
+     * 
+     * @param upperBound The upper bound for calculation
+     * @return ArrayList with sum of the factors
+     */
+    private static ArrayList<Integer> createFactorSumArray(int upperBound) {
+        // ArrayList containing the sum of all the factors from lowerBound to upperBound
+        ArrayList<Integer> sumOfAllFactors = new ArrayList<Integer>();
+
+        // calculate sum of factors for each number
+        for (int number = LOWER_BOUND; number <= upperBound; number++) {
+            calculateFactorSum(sumOfAllFactors, number);
+        }
+
+        return sumOfAllFactors;
+    }
+
+    /**
+     * Calculates the sum of the amicable numbers given ArrayList of factor sums.
+     * 
+     * @param allFactorSums The ArrayList containing factor sums
+     * @param upperBound    The upper bound for the question
+     * @return The sum of all amicable numbers
+     */
+    private static int sumOfAmicableNumbers(ArrayList<Integer> allFactorSums, int upperBound) {
+        // the sum of amicable numbers
+        int amicableNumSum = 0;
+
+        // loop through the ArrayList
         for (int index = 0; index < allFactorSums.size(); index++) {
             int element = (int) (allFactorSums.get(index));
-            if (element == 1 || element > UPPER_BOUND - 1 || element == index + LOWER_BOUND) {
+            // check if the number is a amicable number
+            if (element == 1 || element > upperBound - 1 || element == index + LOWER_BOUND) {
                 continue;
             } else if (index + LOWER_BOUND == (int) (allFactorSums.get(element - LOWER_BOUND))) {
-                totalSum += (index + LOWER_BOUND);
+                amicableNumSum += (index + LOWER_BOUND);
             }
         }
-        return totalSum;
+
+        return amicableNumSum;
     }
 
 }

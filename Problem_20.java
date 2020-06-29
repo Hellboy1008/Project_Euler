@@ -1,35 +1,83 @@
 
-//龍ONE
+/**
+ * Created by: 龍ONE 
+ * Date Created: January 15, 2019
+ * Date Edited: June 29, 2020
+ * Purpose: Solution to Project Euler Problem 20
+ */
 
 import java.math.BigInteger;
 
+/**
+ * This class contains a method that finds the sum of the digits for a factorial
+ * of a given number. The main method executes the program.
+ */
 public class Problem_20 {
 
-    private static final long TIME_CONVERSION = 1000000000;
-    private static final String TIME_TAKEN = "Time Taken:%s seconds";
-    private static final String ANSWER = "The sum of all the digits is: ";
+    // the number that we are solving for
     private static final int FACTORIAL_NUM = 100;
 
+    // conversion from nanoseconds to seconds
+    private static final long TIME_CONVERSION = 1000000000;
+
+    // answer prompt
+    private static final String ANSWER = "The sum of all the digits is: ";
+    // time take to solve the problem
+    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+
+    /**
+     * The main method executes the solution and prints it alongside the time taken
+     * to solve the program.
+     * 
+     * @param args The arguments given to the main method
+     * @return None
+     */
     public static void main(String[] args) {
-        long startTime = System.nanoTime();
-        int answer = 0;
+        // solution for the problem
+        int solution;
+        // end time of the program
+        long endTime;
+        // start time of the program
+        long startTime;
+
+        startTime = System.nanoTime();
+        solution = sumOfDigitsFactorial(FACTORIAL_NUM);
+        endTime = System.nanoTime();
+
+        // print answer and time taken
+        System.out.println(ANSWER + solution);
+        System.out.printf(TIME_TAKEN, (double) (endTime - startTime) / TIME_CONVERSION);
+    }
+
+    /**
+     * Calculates the sum of the digits of a factorial of the number.
+     * 
+     * @param number The number in question
+     * @return The sum of the digits of the factorial of the number
+     */
+    private static int sumOfDigitsFactorial(int number) {
+        // sum of the digits
+        int digitSum = 0;
+        // the string containing the factorial of the number
         String factorialString = "";
+        // the big integer for the factorial value
         BigInteger factorial = BigInteger.ONE;
+        // the number used for factorial calculation that counts up to number
         BigInteger startingNum = BigInteger.ONE;
-        // calculate 100!
-        for (int index = 1; index <= FACTORIAL_NUM; index++) {
+
+        // calculates the factorial of the number
+        for (int index = 1; index <= number; index++) {
             factorial = factorial.multiply(startingNum);
             startingNum = startingNum.add(BigInteger.ONE);
         }
-        // find sum of all digits
+
+        // calculates the sum of the digits
         factorialString = factorial.toString();
         for (int index = 0; index < factorialString.length(); index++) {
-            answer += Character.getNumericValue(factorialString.charAt(index));
+            digitSum += Character.getNumericValue(factorialString.charAt(index));
         }
-        long finishTime = System.nanoTime();
-        double timeTaken = (double) (finishTime - startTime);
-        System.out.println(ANSWER + answer);
-        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
+
+        return digitSum;
     }
 
 }

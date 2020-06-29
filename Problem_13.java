@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Jan 23, 2018
- * Date Edited: June 11, 2019
+ * Date Edited: June 29, 2020
  * Purpose: Solution to Project Euler Problem 13
  */
 
@@ -38,6 +38,7 @@ public class Problem_13 {
      * 
      * @param args The arguments given to the main method
      * @return None
+     * @throws FileNotFoundException Throws error if file not found
      */
     public static void main(String[] args) throws FileNotFoundException {
         // end time of the program
@@ -94,7 +95,8 @@ public class Problem_13 {
      * This method gets the list of numbers from the file.
      * 
      * @param inputFile The file being read
-     * @return A double list containing the 50 digit numbers
+     * @return An array containing the 50 digit numbers
+     * @throws FileNotFoundException Throws error if file not found
      */
     private static long[] getNumbers(File inputFile) throws FileNotFoundException {
         // number of lines in file
