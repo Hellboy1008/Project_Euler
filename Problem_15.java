@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: December 22, 2018
- * Date Edited: June 28, 2020
+ * Date Edited: July 2, 2020
  * Purpose: Solution to Project Euler Problem 15
  */
 
@@ -55,7 +55,7 @@ public class Problem_15 {
      */
     private static double factorial(double number) {
         // base case for recursion
-        if (number == 1) {
+        if (number == 0) {
             return 1;
         }
 
