@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: January 15, 2019
- * Date Edited: June 29, 2020
+ * Date Edited: July 2, 2020
  * Purpose: Solution to Project Euler Problem 19
  */
 
@@ -39,7 +39,8 @@ public class Problem_19 {
     private static final long TIME_CONVERSION = 1000000000;
 
     // answer prompt
-    private static final String ANSWER = "The number of sundays that all on the first in the 19th century is: ";
+    private static final String ANSWER = "The number of sundays that all on the first between " + START_YEAR + " and "
+            + END_YEAR + " is: ";
     // time take to solve the problem
     private static final String TIME_TAKEN = "Time Taken:%s seconds";
 

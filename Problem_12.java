@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Jan 22, 2018
- * Date Edited: June 9, 2019
+ * Date Edited: July 2, 2020
  * Purpose: Solution to Project Euler Problem 12
  */
 
@@ -23,7 +23,7 @@ public class Problem_12 {
     private static final long TIME_CONVERSION = 1000000000;
 
     // answer prompt
-    private static final String ANSWER = "The first triangle number to have over 500 divisors is: ";
+    private static final String ANSWER = "The first triangle number to have over " + TARGET_FACTORS + " divisors is: ";
     // time take to solve the problem
     private static final String TIME_TAKEN = "Time Taken:%s seconds";
 

@@ -2,13 +2,13 @@
 /**
  * Created by: 龍ONE 
  * Date Created: December 22, 2018
- * Date Edited: June 28, 2020
+ * Date Edited: July 2, 2020
  * Purpose: Solution to Project Euler Problem 16
  */
 
 /**
- * This class contains a method that calculates the sum of the digits of a number 
- * raised to another number. The main method executes the program.
+ * This class contains a method that calculates the sum of the digits of a number n
+ * raised to another number m. The main method executes the program.
  */
 
 import java.math.BigInteger;
@@ -24,7 +24,7 @@ public class Problem_16 {
     private static final long TIME_CONVERSION = 1000000000;
 
     // answer prompt
-    private static final String ANSWER = "The sum of the digits of 2^1000 is: ";
+    private static final String ANSWER = "The sum of the digits of " + BASE + "^" + EXPONENT + " is: ";
     // time take to solve the problem
     private static final String TIME_TAKEN = "Time Taken:%s seconds";
 

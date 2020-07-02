@@ -2,13 +2,13 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Jan 3, 2018
- * Date Edited: May 15, 2019
+ * Date Edited: July 2, 2020
  * Purpose: Solution to Project Euler Problem 5
  */
 
 /**
- * This class contains a method that calculates the smallest number divisible by
- * n consecutive integers as well as the main method that executes the program.
+ * This class contains a method that calculates the smallest number evenly
+ * divisible by all numbers from 1 to n. The main method executes the program.
  */
 public class Problem_05 {
 
@@ -27,7 +27,8 @@ public class Problem_05 {
     private static int[] possibleFactors;
 
     // answer prompt
-    private static final String ANSWER = "The smallest positive number divisible by all integers from 1-20 is: ";
+    private static final String ANSWER = "The smallest positive number evenly divisible by all integers from 1 to "
+            + UPPER_BOUND + " is: ";
     // time take to solve the problem
     private static final String TIME_TAKEN = "Time Taken:%s seconds";
 

@@ -8,7 +8,7 @@
 
 /**
  * This class contains a method that calculates the number of possible routes in
- * a square grid. The main method executes the program.
+ * a n by n square grid. The main method executes the program.
  */
 public class Problem_15 {
 
@@ -19,7 +19,8 @@ public class Problem_15 {
     private static final long TIME_CONVERSION = 1000000000;
 
     // answer prompt
-    private static final String ANSWER = "The total number of routes is: ";
+    private static final String ANSWER = "The total number of routes through a " + GRID_SIZE + " x " + GRID_SIZE
+            + " grid is: ";
     // time take to solve the problem
     private static final String TIME_TAKEN = "Time Taken:%s seconds";
 

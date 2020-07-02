@@ -2,13 +2,13 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Oct 12, 2017
- * Date Edited: May 12, 2019
+ * Date Edited: July 2, 2020
  * Purpose: Solution to Project Euler Problem 1
  */
 
 /**
- * This class contains a method that calculates the sum of a multiple as well as
- * the main method that executes the program.
+ * This class contains a method that calculates the sum of all the multiples of
+ * 3 and 5 below a number n. The main method executes the program.
  */
 public class Problem_01 {
 
@@ -23,7 +23,7 @@ public class Problem_01 {
     private static final long TIME_CONVERSION = 1000000000;
 
     // answer prompt
-    private static final String ANSWER = "The sum of all multiples of 3 or 5 below 1000 is: ";
+    private static final String ANSWER = "The sum of all multiples of 3 or 5 below " + LIMIT + " is: ";
     // time take to solve the problem
     private static final String TIME_TAKEN = "Time Taken: %s seconds";
 

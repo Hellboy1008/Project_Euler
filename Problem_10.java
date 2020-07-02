@@ -2,13 +2,13 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Jan 22, 2018
- * Date Edited: June 8, 2019
+ * Date Edited: July 2, 2020
  * Purpose: Solution to Project Euler Problem 10
  */
 
 /**
- * This class contains a method that calculates the sum of primes below a
- * certain number. The main method executes the program.
+ * This class contains a method that calculates the sum of primes below a limit
+ * n. The main method executes the program.
  */
 public class Problem_10 {
 
@@ -24,7 +24,7 @@ public class Problem_10 {
     private static final long TIME_CONVERSION = 1000000000;
 
     // answer prompt
-    private static final String ANSWER = "The sum of all prime numbers below two million is: ";
+    private static final String ANSWER = "The sum of all prime numbers below " + UPPER_LIMIT + " is: ";
     // time take to solve the problem
     private static final String TIME_TAKEN = "Time Taken:%s seconds";
 

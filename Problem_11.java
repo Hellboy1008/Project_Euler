@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Jan 22, 2018
- * Date Edited: June 9, 2019
+ * Date Edited: July 2, 2020
  * Purpose: Solution to Project Euler Problem 11
  */
 
@@ -11,8 +11,8 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- * This class contains a method that calculates the maximum product in a grid.
- * The main method executes the program.
+ * This class contains a method that calculates the maximum product of n
+ * adjacent numbers in a grid. The main method executes the program.
  */
 public class Problem_11 {
 
@@ -23,7 +23,8 @@ public class Problem_11 {
     private static final long TIME_CONVERSION = 1000000000;
 
     // answer prompt
-    private static final String ANSWER = "The greatest product is: ";
+    private static final String ANSWER = "The greatest product of " + ADJACENT_NUM
+            + " adjacent numbers in the grid is: ";
     // time take to solve the problem
     private static final String TIME_TAKEN = "Time Taken:%s seconds";
 

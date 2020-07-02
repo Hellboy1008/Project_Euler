@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: January 15, 2019
- * Date Edited: June 29, 2020
+ * Date Edited: July 2, 2020
  * Purpose: Solution to Project Euler Problem 20
  */
 
@@ -10,7 +10,7 @@ import java.math.BigInteger;
 
 /**
  * This class contains a method that finds the sum of the digits for a factorial
- * of a given number. The main method executes the program.
+ * of a number n. The main method executes the program.
  */
 public class Problem_20 {
 
@@ -21,7 +21,7 @@ public class Problem_20 {
     private static final long TIME_CONVERSION = 1000000000;
 
     // answer prompt
-    private static final String ANSWER = "The sum of all the digits is: ";
+    private static final String ANSWER = "The sum of the digits in the number " + FACTORIAL_NUM + "! is: ";
     // time take to solve the problem
     private static final String TIME_TAKEN = "Time Taken:%s seconds";
 

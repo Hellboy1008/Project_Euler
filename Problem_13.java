@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Jan 23, 2018
- * Date Edited: June 29, 2020
+ * Date Edited: July 2, 2020
  * Purpose: Solution to Project Euler Problem 13
  */
 
@@ -12,7 +12,8 @@ import java.util.Scanner;
 
 /**
  * This class contains a method that calculates the the first ten digits of the
- * sum of n 50 digit numbers. The main method executes the program.
+ * sum of the one hundred 50 digit numbers given in the problem. The main method
+ * executes the program.
  */
 public class Problem_13 {
 

@@ -2,14 +2,13 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Dec 28, 2017
- * Date Edited: May 16, 2019
+ * Date Edited: July 2, 2020
  * Purpose: Solution to Project Euler Problem 4
  */
 
 /**
  * This class contains a method that calculates the largest palindrome made from
- * the product of two three-digit numbers as well as the main method that
- * executes the program.
+ * the product of two three-digit numbers. The main method executes the program.
  */
 public class Problem_04 {
 

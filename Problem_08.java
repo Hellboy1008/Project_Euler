@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Jan 15, 2018
- * Date Edited: June 28, 2020
+ * Date Edited: July 2, 2020
  * Purpose: Solution to Project Euler Problem 8
  */
 
@@ -11,8 +11,8 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- * This class contains a method that calculates the greatest product of adjacent
- * values in a large number. The main method executes the program.
+ * This class contains a method that calculates the greatest product of n
+ * adjacent values in a large number. The main method executes the program.
  */
 public class Problem_08 {
 
@@ -23,7 +23,8 @@ public class Problem_08 {
     private static final long TIME_CONVERSION = 1000000000;
 
     // answer prompt
-    private static final String ANSWER = "The maximum product in this 1000 digit number is: ";
+    private static final String ANSWER = "The maximum product of " + ADJACENT_VALUES
+            + " adjacent digits in this 1000 digit number is: ";
     // time take to solve the problem
     private static final String TIME_TAKEN = "Time Taken:%s seconds";
 

@@ -2,14 +2,14 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Jan 3, 2018
- * Date Edited: May 15, 2019
+ * Date Edited: July 2, 2020
  * Purpose: Solution to Project Euler Problem 6
  */
 
 /**
  * This class contains a method that calculates the difference between the sum
- * of squares of natural numbers and the squares of the sum. The main method
- * executes the program.
+ * of squares of the first n natural numbers and the square of the sum. The main
+ * method executes the program.
  */
 public class Problem_06 {
 
@@ -26,7 +26,7 @@ public class Problem_06 {
     private static final long TIME_CONVERSION = 1000000000;
 
     // answer prompt
-    private static final String ANSWER = "The difference is: ";
+    private static final String ANSWER = "The difference is for the first " + UPPER_BOUND + " natural numbers is: ";
     // time take to solve the problem
     private static final String TIME_TAKEN = "Time Taken:%s seconds";
 

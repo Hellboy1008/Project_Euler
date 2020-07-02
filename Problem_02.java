@@ -2,13 +2,13 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Oct 12, 2017
- * Date Edited: May 12, 2019
+ * Date Edited: July 2, 2020
  * Purpose: Solution to Project Euler Problem 2
  */
 
 /**
  * This class contains a method that calculates the sum of a even fibonacci
- * numbers as well as the main method that executes the program.
+ * numbers below a limit n. The main method executes the program.
  */
 public class Problem_02 {
 
@@ -23,7 +23,7 @@ public class Problem_02 {
     private static final long TIME_CONVERSION = 1000000000;
 
     // answer prompt
-    private static final String ANSWER = "The sum of even fibonacci numbers under 4 million is: ";
+    private static final String ANSWER = "The sum of even fibonacci numbers under " + UPPER_BOUND + " is: ";
     // time take to solve the problem
     private static final String TIME_TAKEN = "Time Taken: %s seconds";
 

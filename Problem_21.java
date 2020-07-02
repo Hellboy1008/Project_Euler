@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: January 16, 2019
- * Date Edited: June 29, 2020
+ * Date Edited: July 2, 2020
  * Purpose: Solution to Project Euler Problem 21
  */
 
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  * This class contains a method that finds the sum of all amicable numbers under
- * a certain number. The main method executes the program.
+ * a number n. The main method executes the program.
  */
 public class Problem_21 {
 
@@ -23,7 +23,7 @@ public class Problem_21 {
     private static final long TIME_CONVERSION = 1000000000;
 
     // answer prompt
-    private static final String ANSWER = "The sum of all the amicable numbers is: ";
+    private static final String ANSWER = "The sum of all the amicable numbers under " + UPPER_BOUND + " is: ";
     // time take to solve the problem
     private static final String TIME_TAKEN = "Time Taken:%s seconds";
 

@@ -2,13 +2,13 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Oct 12, 2017
- * Date Edited: June 28, 2020
+ * Date Edited: July 2, 2020
  * Purpose: Solution to Project Euler Problem 3
  */
 
 /**
- * This class contains a method that calculates the all the prime factors of a
- * number as well as the main method that executes the program.
+ * This class contains a method that calculates the largest prime factor of a
+ * number. The main method executes the program.
  */
 public class Problem_03 {
 
@@ -21,7 +21,7 @@ public class Problem_03 {
     private static final long TIME_CONVERSION = 1000000000;
 
     // answer prompt
-    private static final String ANSWER = "The largest prime factor is: ";
+    private static final String ANSWER = "The largest prime factor for the number " + INPUT + " is: ";
     // time take to solve the problem
     private static final String TIME_TAKEN = "Time Taken: %s seconds";
 

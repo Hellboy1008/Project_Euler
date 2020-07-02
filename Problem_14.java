@@ -2,13 +2,13 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Jan 24, 2018
- * Date Edited: June 12, 2019
+ * Date Edited: July 2, 2020
  * Purpose: Solution to Project Euler Problem 14
  */
 
 /**
  * This class contains a method that calculates the longest Collatz sequence
- * chain under n. The main method executes the program.
+ * chain for a starting number under n. The main method executes the program.
  */
 public class Problem_14 {
 
@@ -25,7 +25,8 @@ public class Problem_14 {
     private static final long UPPER_BOUND = 1000000;
 
     // answer prompt
-    private static final String ANSWER = "The longest chain is produced by: ";
+    private static final String ANSWER = "The longest chain for a starting number under " + UPPER_BOUND
+            + " is produced by: ";
     // time take to solve the problem
     private static final String TIME_TAKEN = "Time Taken:%s seconds";
 

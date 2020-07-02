@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Jan 3, 2018
- * Date Edited: June 28, 2020
+ * Date Edited: July 2, 2020
  * Purpose: Solution to Project Euler Problem 7
  */
 
@@ -23,7 +23,7 @@ public class Problem_07 {
     private static final long TIME_CONVERSION = 1000000000;
 
     // answer prompt
-    private static final String ANSWER = "The 10001th prime number is: ";
+    private static final String ANSWER = "The " + TARGET + "th prime number is: ";
     // time take to solve the problem
     private static final String TIME_TAKEN = "Time Taken:%s seconds";
 
