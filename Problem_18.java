@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: December 25, 2018
- * Date Edited: June 29, 2020
+ * Date Edited: July 5, 2020
  * Purpose: Solution to Project Euler Problem 18
  */
 
@@ -22,7 +22,7 @@ public class Problem_18 {
     // answer prompt
     private static final String ANSWER = "The maximum total from top to bottom is: ";
     // time take to solve the problem
-    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+    private static final String TIME_TAKEN = "Time Taken: %s seconds";
 
     // input file
     private static final File INPUT_FILE = new File("./Problem_18_Input.txt");

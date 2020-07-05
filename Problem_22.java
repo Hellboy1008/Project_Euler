@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: January 17, 2019
- * Date Edited: June 29, 2020
+ * Date Edited: July 5, 2020
  * Purpose: Solution to Project Euler Problem 22
  */
 
@@ -29,7 +29,7 @@ public class Problem_22 {
     // comma for pattern recognition and delimiter
     private static final String COMMA = ",";
     // time take to solve the problem
-    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+    private static final String TIME_TAKEN = "Time Taken: %s seconds";
 
     // input file
     private static final File INPUT_FILE = new File("./Problem_22_Input.txt");

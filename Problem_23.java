@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: January 17, 2019
- * Date Edited: July 2, 2020
+ * Date Edited: July 5, 2020
  * Purpose: Solution to Project Euler Problem 23
  */
 
@@ -27,7 +27,7 @@ public class Problem_23 {
     private static final String ANSWER = "The sum of all positive integers which cannot be written as the"
             + " sum of two abundant numbers is: ";
     // time take to solve the problem
-    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+    private static final String TIME_TAKEN = "Time Taken: %s seconds";
 
     /**
      * The main method executes the solution and prints it alongside the time taken

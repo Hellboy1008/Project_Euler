@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Jan 3, 2018
- * Date Edited: July 2, 2020
+ * Date Edited: July 5, 2020
  * Purpose: Solution to Project Euler Problem 5
  */
 
@@ -30,7 +30,7 @@ public class Problem_05 {
     private static final String ANSWER = "The smallest positive number evenly divisible by all integers from 1 to "
             + UPPER_BOUND + " is: ";
     // time take to solve the problem
-    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+    private static final String TIME_TAKEN = "Time Taken: %s seconds";
 
     /**
      * The main method executes the solution and prints it alongside the time taken

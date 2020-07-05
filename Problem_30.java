@@ -29,7 +29,7 @@ public class Problem_30 {
     private static final String ANSWER = "The sum of all numbers that can be written as the sum of the " + POWER
             + "th powers of their digits is: ";
     // time take to solve the problem
-    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+    private static final String TIME_TAKEN = "Time Taken: %s seconds";
 
     /**
      * The main method executes the solution and prints it alongside the time taken

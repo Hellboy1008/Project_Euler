@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Jan 23, 2018
- * Date Edited: July 2, 2020
+ * Date Edited: July 5, 2020
  * Purpose: Solution to Project Euler Problem 13
  */
 
@@ -28,7 +28,7 @@ public class Problem_13 {
     // answer prompt
     private static final String ANSWER = "The first ten digits of the sum is: ";
     // time take to solve the problem
-    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+    private static final String TIME_TAKEN = "Time Taken: %s seconds";
 
     // input file
     private static final File INPUT_FILE = new File("./Problem_13_Input.txt");

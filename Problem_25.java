@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: January 30, 2019
- * Date Edited: July 2, 2020
+ * Date Edited: July 5, 2020
  * Purpose: Solution to Project Euler Problem 25
  */
 
@@ -26,7 +26,7 @@ public class Problem_25 {
     // answer prompt
     private static final String ANSWER = "The index of the first fibonacci term with " + TOTAL_DIGITS + " digits is: ";
     // time take to solve the problem
-    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+    private static final String TIME_TAKEN = "Time Taken: %s seconds";
 
     /**
      * The main method executes the solution and prints it alongside the time taken

@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Jan 22, 2018
- * Date Edited: July 2, 2020
+ * Date Edited: July 5, 2020
  * Purpose: Solution to Project Euler Problem 11
  */
 
@@ -26,7 +26,7 @@ public class Problem_11 {
     private static final String ANSWER = "The greatest product of " + ADJACENT_NUM
             + " adjacent numbers in the grid is: ";
     // time take to solve the problem
-    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+    private static final String TIME_TAKEN = "Time Taken: %s seconds";
 
     // input file
     private static final File INPUT_FILE = new File("./Problem_11_Input.txt");

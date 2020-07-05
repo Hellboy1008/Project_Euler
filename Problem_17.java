@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: December 25, 2018
- * Date Edited: June 28, 2020
+ * Date Edited: July 5, 2020
  * Purpose: Solution to Project Euler Problem 17
  */
 
@@ -34,7 +34,7 @@ public class Problem_17 {
     // answer prompt
     private static final String ANSWER = "The total number of letter used is: ";
     // time take to solve the problem
-    private static final String TIME_TAKEN = "Time Taken:%s seconds";
+    private static final String TIME_TAKEN = "Time Taken: %s seconds";
 
     // length of one through nine in words
     private static final int[] ONE_TO_NINE = { 3, 3, 5, 4, 4, 3, 5, 5, 4 };
