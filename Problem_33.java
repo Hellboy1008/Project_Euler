@@ -1,76 +1,115 @@
 
-//龍ONE
+/**
+ * Created by: 龍ONE
+ * Date Created: February 4, 2019
+ * Date Edited: July 7, 2020
+ * Purpose: Solution to Project Euler Problem 33
+ */
 
-import java.util.ArrayList;
-
+/**
+ * This class contains a method that calculates the product of anomalous
+ * cancelling proper fractions (curious fractions) that contains n digits in the
+ * numerator and denominator. The main method executes the program.
+ */
 public class Problem_33 {
 
+    // the number of digits for each number in the fraction
+    private static final int DIGITS_FOR_FRACTIONS = 2;
+    // div value for slicing numbers
+    private static final int DIV_VAL = 10;
+    // largest value for the numerator/denominator
+    private static final int LARGEST_NUM = (int) Math.pow(10, DIGITS_FOR_FRACTIONS) - 1;
+    // smallest value for the numerator/denominator
+    private static final int SMALLEST_NUM = (int) Math.pow(10, DIGITS_FOR_FRACTIONS - 1);
+
+    // conversion from nanoseconds to seconds
     private static final long TIME_CONVERSION = 1000000000;
-    private static final String TIME_TAKEN = "Time Taken:%s seconds";
-    private static final String ANSWER = "The value of the denominator is: ";
-    private static final int SMALLEST_NUMERATOR = 10;
-    private static final int LARGEST_NUMERATOR = 100;
-    private static final int NUMBERS_IN_FRACTIONS = 2;
 
+    // answer prompt
+    private static final String ANSWER = "The value of the denominator for the product of these fractions with "
+            + DIGITS_FOR_FRACTIONS + " digits in the numerator/denominator is: ";
+    // time take to solve the problem
+    private static final String TIME_TAKEN = "Time Taken: %s seconds";
+
+    /**
+     * The main method executes the solution and prints it alongside the time taken
+     * to solve the program.
+     * 
+     * @param args The arguments given to the main method
+     * @return None
+     */
     public static void main(String[] args) {
-        long startTime = System.nanoTime();
-        int answer = findCuriosFractionDenominator();
-        long finishTime = System.nanoTime();
-        double timeTaken = (double) (finishTime - startTime);
-        System.out.println(ANSWER + answer);
-        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
+        // solution for the problem
+        int solution;
+        // end time of the program
+        long endTime;
+        // start time of the program
+        long startTime;
+
+        startTime = System.nanoTime();
+        solution = findCuriousFractionDenominator(SMALLEST_NUM, LARGEST_NUM);
+        endTime = System.nanoTime();
+
+        // print answer and time taken
+        System.out.println(ANSWER + solution);
+        System.out.printf(TIME_TAKEN, (double) (endTime - startTime) / TIME_CONVERSION);
     }
 
-    private static int findCuriosFractionDenominator() {
-        ArrayList<Integer> curiousFractionNumerator = new ArrayList<Integer>();
-        ArrayList<Integer> curiousFractionDenominator = new ArrayList<Integer>();
-        // find curious fractions
-        for (double numerator = SMALLEST_NUMERATOR; numerator < LARGEST_NUMERATOR; numerator++) {
-            for (double denominator = numerator; denominator < LARGEST_NUMERATOR; denominator++) {
-                // ignore if numerator and denominator have the same value
-                if (numerator == denominator) {
-                    continue;
-                }
-                double division = numerator / denominator;
-                double wrongDivision = (double) ((int) (numerator) / SMALLEST_NUMERATOR)
-                        / (double) ((int) (denominator) % SMALLEST_NUMERATOR);
-                boolean cancellable = (int) (numerator) % SMALLEST_NUMERATOR == (int) (denominator)
-                        / SMALLEST_NUMERATOR;
-                // determine whether a fraction is curious using these three values
-                if (division == wrongDivision && cancellable == true) {
-                    curiousFractionNumerator.add((int) numerator);
-                    curiousFractionDenominator.add((int) denominator);
-                }
-            }
-        }
-        // find product of the 4 curious fractions
-        int simplifiedDenominator = 0;
+    /**
+     * Finds the product of all curious fractions that can be created using the
+     * smallest and largest possible values and returns the denominator of that
+     * product in fraction form.
+     * 
+     * @param smallest_val The smallest possible value for the numerator/denominator
+     * @param largest_val  The largest possible value for the numerator/denominator
+     * @return The denominator of the product of all these fraction
+     */
+    private static int findCuriousFractionDenominator(int smallest_val, int largest_val) {
+        // product of the denominators for the special fractions
         int denominatorProduct = 1;
+        // product of the numerators for the special fractions
         int numeratorProduct = 1;
-        for (int index = 0; index < curiousFractionNumerator.size(); index++) {
-            numeratorProduct *= curiousFractionNumerator.get(index);
-        }
-        for (int index = 0; index < curiousFractionDenominator.size(); index++) {
-            denominatorProduct *= curiousFractionDenominator.get(index);
-        }
-        // simply fraction using separate helper method
-        simplifiedDenominator = simplyFraction(numeratorProduct, denominatorProduct)[1];
-        return simplifiedDenominator;
-    }
+        // the value for the division
+        double division;
+        // the value for the incorrect division
+        double incorrectDivision;
 
-    private static int[] simplyFraction(int numerator, int denominator) {
-        int[] newFraction = new int[NUMBERS_IN_FRACTIONS];
-        // find all factors of numerator (excluding 1)
-        for (int counter = 1; counter <= Math.sqrt(numerator); counter++) {
-            int factor = numerator / counter;
-            if (numerator % factor == 0 && denominator % factor == 0) {
-                numerator /= factor;
-                denominator /= factor;
+        // loop through all possible numerators
+        for (double numerator = smallest_val; numerator <= largest_val; numerator++) {
+            // loop through all possible denominators
+            for (double denominator = numerator + 1; denominator <= largest_val; denominator++) {
+                // check if the number is cancellable
+                if ((int) (numerator) % DIV_VAL == (int) (denominator) / DIV_VAL) {
+                    division = numerator / denominator;
+                    incorrectDivision = (double) ((int) (numerator) / DIV_VAL)
+                            / (double) ((int) (denominator) % DIV_VAL);
+                    // check if the proper division is the same as the incorrect division
+                    if (division == incorrectDivision) {
+                        numeratorProduct *= numerator;
+                        denominatorProduct *= denominator;
+                    }
+                }
             }
         }
-        newFraction[0] = numerator;
-        newFraction[1] = denominator;
-        return newFraction;
+
+        return denominatorProduct / gcd(numeratorProduct, denominatorProduct);
+    }
+
+    /**
+     * This method returns the greatest common divisor between two numbers.
+     * 
+     * @param numOne The first number
+     * @param numTwo The second number
+     * @return The greatest common divisor between the two numbers
+     */
+    private static int gcd(int numOne, int numTwo) {
+
+        // base case for recursion
+        if (numTwo == 0) {
+            return numOne;
+        }
+
+        return gcd(numTwo, numOne % numTwo);
     }
 
 }
