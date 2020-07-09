@@ -1,53 +1,113 @@
 
-//龍ONE
+/**
+ * Created by: 龍ONE 
+ * Date Created: February 8, 2019 
+ * Date Edited: July 9, 2020
+ * Purpose: Solution to Project Euler Problem 36
+ */
 
 import java.lang.StringBuilder;
 import java.util.ArrayList;
 
+/**
+ * This class contains a method that finds the sum of all numbers less than n
+ * which are palindromic in base 10 and base 2. The main method executes the
+ * program.
+ */
 public class Problem_36 {
 
-    private static final long TIME_CONVERSION = 1000000000;
-    private static final String TIME_TAKEN = "Time Taken:%s seconds";
-    private static final String ANSWER = "The sum of these special numbers is: ";
+    // used to strip numbers
+    private static final int DIV_10 = 10;
+    // upper bound for the problem
     private static final int UPPER_BOUND = 1000000;
-    private static final int TENS_DIGIT = 10;
-    private static ArrayList<Integer> palindromeNums = new ArrayList<Integer>();
 
+    // conversion from nanoseconds to seconds
+    private static final long TIME_CONVERSION = 1000000000;
+
+    // answer prompt
+    private static final String ANSWER = "The sum of all numbers less than " + UPPER_BOUND
+            + " which are palindromic in base 10 and base 2 is: ";
+    // time take to solve the problem
+    private static final String TIME_TAKEN = "Time Taken: %s seconds";
+
+    /**
+     * The main method executes the solution and prints it alongside the time taken
+     * to solve the program.
+     * 
+     * @param args The arguments given to the main method
+     * @return None
+     */
     public static void main(String[] args) {
-        long startTime = System.nanoTime();
-        int answer = sumOfDoubleBasePalindrome(UPPER_BOUND);
-        long finishTime = System.nanoTime();
-        double timeTaken = (double) (finishTime - startTime);
-        System.out.println(ANSWER + answer);
-        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
+        // solution for the problem
+        int solution;
+        // end time of the program
+        long endTime;
+        // start time of the program
+        long startTime;
+
+        startTime = System.nanoTime();
+        solution = findPalindromesBase2(findPalindromesBase10(UPPER_BOUND));
+        endTime = System.nanoTime();
+
+        // print answer and time taken
+        System.out.println(ANSWER + solution);
+        System.out.printf(TIME_TAKEN, (double) (endTime - startTime) / TIME_CONVERSION);
     }
 
-    private static void findPalindromes(int limit) {
-        for (int count = 0; count < limit; count++) {
-            int originalNumber = count;
-            int reverse = 0;
-            if (originalNumber % TENS_DIGIT == 0) {
-                continue;
+    /**
+     * Finds all the numbers below the upperBound that are palindromic in base 10.
+     * 
+     * @param upperBound The upper bound for the problem
+     * @return ArrayList containing numbers that are palindromic in base 10
+     */
+    private static ArrayList<Integer> findPalindromesBase10(int upperBound) {
+        // the reverse of a number
+        int reverseNum;
+        // temp variable to hold a number
+        int tempNum;
+        // holds all the numbers in base 10 below the limit that are a palindrome
+        ArrayList<Integer> palindromicNumbers = new ArrayList<Integer>();
+
+        // loop through all possible values
+        for (int num = 0; num < upperBound; num++) {
+            tempNum = num;
+            reverseNum = 0;
+            // find the reverse of a number
+            while (tempNum >= 1) {
+                reverseNum = reverseNum * DIV_10 + tempNum % DIV_10;
+                tempNum /= DIV_10;
             }
-            while (originalNumber >= 1) {
-                reverse = reverse * TENS_DIGIT + originalNumber % TENS_DIGIT;
-                originalNumber /= TENS_DIGIT;
-            }
-            if (count == reverse) {
-                palindromeNums.add(count);
+            // check if the number is a palindrome
+            if (num == reverseNum) {
+                palindromicNumbers.add(num);
             }
         }
+
+        return palindromicNumbers;
     }
 
-    private static int sumOfDoubleBasePalindrome(int limit) {
+    /**
+     * Finds the sum of all numbers in the ArrayList that are palindromic in base 2.
+     * 
+     * @param palindromicNumbers ArrayList containing numbers that are palindromic
+     *                           in base 10
+     * @return Sum of all numbers in the ArrayList that are palindromic in base 2
+     */
+    private static int findPalindromesBase2(ArrayList<Integer> palindromicNumbers) {
+        // sum of the all the numbers that are also palindromic in base 2
         int sum = 0;
-        findPalindromes(limit);
-        for (int index = 0; index < palindromeNums.size(); index++) {
-            StringBuilder binary = new StringBuilder(Integer.toBinaryString(palindromeNums.get(index)));
-            if (binary.toString().equals(binary.reverse().toString())) {
-                sum += palindromeNums.get(index);
+        // StringBuilder for the base 2 representation of a number
+        StringBuilder binaryRepresentation;
+
+        // loop through all numbers that are palindromic in base 10
+        for (int index = 0; index < palindromicNumbers.size(); index++) {
+            binaryRepresentation = new StringBuilder(Integer.toBinaryString(palindromicNumbers.get(index)));
+            // check if the base 2 representation is also palindromic
+            if (binaryRepresentation.toString().equals(binaryRepresentation.reverse().toString())) {
+                sum += palindromicNumbers.get(index);
             }
         }
+
         return sum;
     }
 

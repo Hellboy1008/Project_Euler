@@ -1,130 +1,180 @@
 
-//龍ONE
+/**
+ * Created by: 龍ONE 
+ * Date Created: February 9, 2019 
+ * Date Edited: July 9, 2020
+ * Purpose: Solution to Project Euler Problem 37
+ */
 
-import java.util.ArrayList;
-
+/**
+ * This class contains a method that finds the sum of the only eleven primes
+ * that are both truncatable from left to right and right to left. The main
+ * method executes the program.
+ */
 public class Problem_37 {
 
-    private static final long TIME_CONVERSION = 1000000000;
-    private static final String TIME_TAKEN = "Time Taken:%s seconds";
-    private static final String ANSWER = "The sum of the 11 primes is: ";
-    private static final int UPPER_BOUND = 740000; // narrow through trial and error to 740000
-    private static final int SMALLEST_PRIME = 2;
-    private static final int SMALLEST_TENS_PRIME_INDEX = 4;
-    private static final int TENS_DIGIT = 10;
-    private static final int END_DIGIT_ONE = 3;
-    private static final int END_DIGIT_TWO = 7;
-    private static final int[] POWERS_OF_TEN = { 10, 100, 1000, 10000, 100000 };
-    private static boolean[] notPrime;
-    private static ArrayList<Integer> primes = new ArrayList<Integer>();
-    private static ArrayList<Integer> specialPrimes = new ArrayList<Integer>();
+    // digits the special prime has to start with (2,3,5,7)
+    private static final boolean[] START_DIGITS = { false, false, true, true, false, true, false, true, false, false };
+    // digits that special prime has to end with (3,7)
+    private static final boolean[] END_DIGITS = { false, false, false, true, false, false, false, true, false, false };
 
+    // used to strip numbers
+    private static final int DIV_10 = 10;
+    // number of special primes
+    private static final int NUM_OF_PRIMES = 11;
+    // smallest prime number
+    private static final int SMALLEST_PRIME = 2;
+    // upper bound for the problem (guess and check by increments of powers of 10s)
+    private static final int UPPER_BOUND = 1000000;
+
+    // conversion from nanoseconds to seconds
+    private static final long TIME_CONVERSION = 1000000000;
+
+    // answer prompt
+    private static final String ANSWER = "The sum of these 11 primes is: ";
+    // time take to solve the problem
+    private static final String TIME_TAKEN = "Time Taken: %s seconds";
+
+    /**
+     * The main method executes the solution and prints it alongside the time taken
+     * to solve the program.
+     * 
+     * @param args The arguments given to the main method
+     * @return None
+     */
     public static void main(String[] args) {
-        long startTime = System.nanoTime();
-        int answer = findSpecialPrimes(UPPER_BOUND);
-        long finishTime = System.nanoTime();
-        double timeTaken = (double) (finishTime - startTime);
-        System.out.println(ANSWER + answer);
-        System.out.printf(TIME_TAKEN, timeTaken / TIME_CONVERSION);
+        // solution for the problem
+        int solution;
+        // end time of the program
+        long endTime;
+        // start time of the program
+        long startTime;
+
+        startTime = System.nanoTime();
+        solution = findSpecialPrimesSum();
+        endTime = System.nanoTime();
+
+        // print answer and time taken
+        System.out.println(ANSWER + solution);
+        System.out.printf(TIME_TAKEN, (double) (endTime - startTime) / TIME_CONVERSION);
     }
 
-    private static int findSpecialPrimes(int size) {
-        notPrime = new boolean[size];
+    /**
+     * Calculates the sum of the only eleven primes that are both left and right
+     * truncatable.
+     * 
+     * @return The sum of these special primes
+     */
+    private static int findSpecialPrimesSum() {
+        // holds whether a prime number has invalid digits
+        boolean invalidDigits;
+        // holds whether a number is prime or not
+        boolean[] notPrime = new boolean[UPPER_BOUND];
+        // number of special primes found
+        int numOfSpecialPrimes = 0;
+        // sum of the special primes
+        int sum = 0;
+        // temp variable for a number
+        int tempNum;
+
         // set all non prime numbers to true
         for (int index = SMALLEST_PRIME; index < notPrime.length; index++) {
             for (int counter = index * SMALLEST_PRIME; counter < notPrime.length; counter += index) {
                 notPrime[counter] = true;
             }
         }
-        // add primes to the array
-        for (int index = SMALLEST_PRIME; index < notPrime.length; index++) {
-            if (notPrime[index] == false) {
-                primes.add(index);
-            }
-        }
-        // deep copy primes to specialPrimes (don't count 2,3,5,7)
-        for (int index = SMALLEST_TENS_PRIME_INDEX; index < primes.size(); index++) {
-            // only primes that end with 3 or 7 are left truncatable
-            if ((primes.get(index) % TENS_DIGIT != END_DIGIT_ONE && primes.get(index) % TENS_DIGIT != END_DIGIT_TWO)) {
-                continue;
-            }
-            // only numbers that start with 2,3,5,7 are right truncatable
-            int digit = 0;
-            int temp = primes.get(index);
-            // find digits for original number
-            while (temp != 0) {
-                temp /= TENS_DIGIT;
-                digit++;
-            }
-            if (primes.get(index) / POWERS_OF_TEN[digit - SMALLEST_PRIME] != SMALLEST_PRIME
-                    && primes.get(index) / POWERS_OF_TEN[digit - SMALLEST_PRIME] != END_DIGIT_ONE
-                    && primes.get(index) / POWERS_OF_TEN[digit - SMALLEST_PRIME] != (END_DIGIT_ONE + SMALLEST_PRIME)
-                    && primes.get(index) / POWERS_OF_TEN[digit - SMALLEST_PRIME] != END_DIGIT_TWO) {
-                continue;
-            }
-            specialPrimes.add(primes.get(index));
-        }
-        // remove primes with even digits other than 2
-        for (int index = 0; index < specialPrimes.size(); index++) {
-            int temp = specialPrimes.get(index);
-            while (temp != 0) {
-                if (temp % TENS_DIGIT == (SMALLEST_PRIME + SMALLEST_PRIME)
-                        || temp % TENS_DIGIT == (SMALLEST_PRIME + SMALLEST_PRIME + SMALLEST_PRIME)
-                        || temp % TENS_DIGIT == (SMALLEST_PRIME * SMALLEST_PRIME * SMALLEST_PRIME)
-                        || temp % TENS_DIGIT == 0) {
-                    specialPrimes.remove(index);
-                    index--;
-                    break;
-                }
-                temp /= TENS_DIGIT;
-            }
-        }
-        // check right truncatable or not
-        for (int index = 0; index < specialPrimes.size(); index++) {
-            int temp = specialPrimes.get(index);
-            while (temp != 0) {
-                if (primes.contains(temp / TENS_DIGIT) == false && temp / TENS_DIGIT != 0) {
-                    specialPrimes.remove(index);
-                    index--;
-                    break;
-                }
-                temp /= TENS_DIGIT;
-            }
-        }
-        // check left truncatable or not
-        for (int index = 0; index < specialPrimes.size(); index++) {
-            int digit = 0;
-            int temp = specialPrimes.get(index);
-            // find digits for original number
-            while (temp != 0) {
-                temp /= TENS_DIGIT;
-                digit++;
-            }
-            int tempTwo = specialPrimes.get(index);
-            // left truncate numbers
-            for (int count = 0; count < digit; count++) {
-                if (tempTwo < TENS_DIGIT) {
-                    if (primes.contains(tempTwo % TENS_DIGIT) == false) {
-                        specialPrimes.remove(index);
-                        index--;
+
+        // loop through all possible values
+        for (int num = DIV_10; num < notPrime.length; num++) {
+            // only run if the number is prime
+            if (notPrime[num] == false) {
+                // check if the number ends with a 3 or 7
+                if (END_DIGITS[num % DIV_10] == true) {
+                    tempNum = num;
+                    // strip the number until we get the first digit
+                    invalidDigits = false;
+                    while (tempNum >= DIV_10) {
+                        // check if the prime has even digits that are not 2
+                        if ((tempNum % DIV_10) % SMALLEST_PRIME == 0 && tempNum % DIV_10 != SMALLEST_PRIME) {
+                            invalidDigits = true;
+                            break;
+                        }
+                        tempNum /= DIV_10;
                     }
-                    break;
-                }
-                if (primes.contains(tempTwo % POWERS_OF_TEN[digit - count - SMALLEST_PRIME]) == false) {
-                    specialPrimes.remove(index);
-                    index--;
-                    break;
-                } else {
-                    tempTwo %= POWERS_OF_TEN[digit - count - SMALLEST_PRIME];
+                    // check if the prime has invalid digits
+                    if (invalidDigits == true) {
+                        continue;
+                    }
+                    // check if the number starts with 2,3,5,7
+                    if (START_DIGITS[tempNum] == true) {
+                        // check if the number is left and right truncatable
+                        if (leftTruncatablePrime(num, notPrime) == true
+                                && rightTruncatablePrime(num, notPrime) == true) {
+                            numOfSpecialPrimes++;
+                            sum += num;
+                        }
+                    }
                 }
             }
+            // if all 11 primes are found, exit loop
+            if (numOfSpecialPrimes == NUM_OF_PRIMES) {
+                break;
+            }
         }
-        // return sum of the special primes
-        int sum = 0;
-        for (int index = 0; index < specialPrimes.size(); index++) {
-            sum += specialPrimes.get(index);
-        }
+
         return sum;
+    }
+
+    /**
+     * Finds out whether a prime number is left truncatable.
+     * 
+     * @param prime    The prime number in question
+     * @param notPrime Contains whether an number is prime
+     * @return True if the number is left truncatable, false otherwise
+     */
+    private static boolean leftTruncatablePrime(int prime, boolean[] notPrime) {
+        // number of digits in the prime number
+        int digits;
+        // temp variable for the prime number
+        int tempNum;
+
+        // run until the second last digit in the number
+        while (prime >= DIV_10) {
+            digits = 1;
+            tempNum = prime;
+            // find the number of digits in the prime number
+            while (tempNum > DIV_10) {
+                digits++;
+                tempNum /= DIV_10;
+            }
+            prime -= tempNum * Math.pow(DIV_10, digits - 1);
+            // check if the truncated value is a prime
+            if (notPrime[prime] == true) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Finds out whether a prime number is right truncatable.
+     * 
+     * @param prime    The prime number in question
+     * @param notPrime Contains whether an number is prime
+     * @return True if the number is right truncatable, false otherwise
+     */
+    private static boolean rightTruncatablePrime(int prime, boolean[] notPrime) {
+        // run until the second digit
+        while (prime >= DIV_10) {
+            prime /= DIV_10;
+            // check if the truncated value is a prime
+            if (notPrime[prime] == true) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
 }
