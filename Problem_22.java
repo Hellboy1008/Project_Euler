@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: January 17, 2019
- * Date Edited: July 5, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 22
  */
 
@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.Scanner;
 
 /**
- * This class contains a method that calculates the total name scores from a
+ * This class contains method(s) that calculates the total name scores from a
  * list of names. The main method executes the program.
  */
 public class Problem_22 {

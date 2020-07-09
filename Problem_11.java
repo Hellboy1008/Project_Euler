@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Jan 22, 2018
- * Date Edited: July 5, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 11
  */
 
@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- * This class contains a method that calculates the maximum product of n
+ * This class contains method(s) that calculates the maximum product of n
  * adjacent numbers in a grid. The main method executes the program.
  */
 public class Problem_11 {

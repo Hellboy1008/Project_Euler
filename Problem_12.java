@@ -2,12 +2,12 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Jan 22, 2018
- * Date Edited: July 5, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 12
  */
 
 /**
- * This class contains a method that calculates the first triangle number with n
+ * This class contains method(s) that calculates the first triangle number with n
  * divisors. The main method executes the program.
  */
 public class Problem_12 {

@@ -2,14 +2,14 @@
 /**
  * Created by: 龍ONE 
  * Date Created: January 30, 2019
- * Date Edited: July 5, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 26
  */
 
 import java.math.BigInteger;
 
 /**
- * This class contains a method that calculates the number between 1 and n for
+ * This class contains method(s) that calculates the number between 1 and n for
  * which 1/n contains the longest recurring cycle in its decimal fraction part.
  * The main method executes the program.
  */

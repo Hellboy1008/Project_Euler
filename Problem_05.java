@@ -2,12 +2,12 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Jan 3, 2018
- * Date Edited: July 5, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 5
  */
 
 /**
- * This class contains a method that calculates the smallest number evenly
+ * This class contains method(s) that calculates the smallest number evenly
  * divisible by all numbers from 1 to n. The main method executes the program.
  */
 public class Problem_05 {

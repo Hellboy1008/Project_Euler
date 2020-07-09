@@ -2,12 +2,12 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Jan 3, 2018
- * Date Edited: July 5, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 6
  */
 
 /**
- * This class contains a method that calculates the difference between the sum
+ * This class contains method(s) that calculates the difference between the sum
  * of squares of the first n natural numbers and the square of the sum. The main
  * method executes the program.
  */

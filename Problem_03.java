@@ -2,12 +2,12 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Oct 12, 2017
- * Date Edited: July 2, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 3
  */
 
 /**
- * This class contains a method that calculates the largest prime factor of a
+ * This class contains method(s) that calculates the largest prime factor of a
  * number. The main method executes the program.
  */
 public class Problem_03 {

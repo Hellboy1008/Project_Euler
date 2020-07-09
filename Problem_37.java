@@ -7,7 +7,7 @@
  */
 
 /**
- * This class contains a method that finds the sum of the only eleven primes
+ * This class contains method(s) that finds the sum of the only eleven primes
  * that are both truncatable from left to right and right to left. The main
  * method executes the program.
  */

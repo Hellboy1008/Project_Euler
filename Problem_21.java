@@ -2,14 +2,14 @@
 /**
  * Created by: 龍ONE 
  * Date Created: January 16, 2019
- * Date Edited: July 5, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 21
  */
 
 import java.util.ArrayList;
 
 /**
- * This class contains a method that finds the sum of all amicable numbers under
+ * This class contains method(s) that finds the sum of all amicable numbers under
  * a number n. The main method executes the program.
  */
 public class Problem_21 {

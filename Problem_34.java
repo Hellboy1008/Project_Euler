@@ -2,12 +2,12 @@
 /**
  * Created by: 龍ONE
  * Date Created: February 5, 2019
- * Date Edited: July 7, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 34
  */
 
 /**
- * This class contains a method that finds the sum of all numbers which are
+ * This class contains method(s) that finds the sum of all numbers which are
  * equal to the sum of the factorial of their digits (curious numbers). The main
  * method executes the program.
  */

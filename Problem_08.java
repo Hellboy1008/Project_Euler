@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Jan 15, 2018
- * Date Edited: July 5, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 8
  */
 
@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- * This class contains a method that calculates the greatest product of n
+ * This class contains method(s) that calculates the greatest product of n
  * adjacent values in a large number. The main method executes the program.
  */
 public class Problem_08 {

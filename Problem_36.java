@@ -10,7 +10,7 @@ import java.lang.StringBuilder;
 import java.util.ArrayList;
 
 /**
- * This class contains a method that finds the sum of all numbers less than n
+ * This class contains method(s) that finds the sum of all numbers less than n
  * which are palindromic in base 10 and base 2. The main method executes the
  * program.
  */

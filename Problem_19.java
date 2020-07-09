@@ -2,14 +2,14 @@
 /**
  * Created by: 龍ONE 
  * Date Created: January 15, 2019
- * Date Edited: July 5, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 19
  */
 
 import java.util.ArrayList;
 
 /**
- * This class contains a method that finds the number of sundays that fell on
+ * This class contains method(s) that finds the number of sundays that fell on
  * the first of the month between two years. The main method executes the
  * program.
  */

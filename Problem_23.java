@@ -2,14 +2,14 @@
 /**
  * Created by: 龍ONE 
  * Date Created: January 17, 2019
- * Date Edited: July 5, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 23
  */
 
 import java.util.ArrayList;
 
 /**
- * This class contains a method that calculates the sum of all positive integers
+ * This class contains method(s) that calculates the sum of all positive integers
  * which cannot be written as the sum of two abundant numbers. The main method
  * executes the program.
  */

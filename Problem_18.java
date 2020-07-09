@@ -2,7 +2,7 @@
 /**
  * Created by: 龍ONE 
  * Date Created: December 25, 2018
- * Date Edited: July 5, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 18
  */
 
@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- * This class contains a method that finds the maximum total from top to bottom
+ * This class contains method(s) that finds the maximum total from top to bottom
  * of a pyramid containing numbers. The main method executes the program.
  */
 public class Problem_18 {

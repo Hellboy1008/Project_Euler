@@ -2,12 +2,12 @@
 /**
  * Created by: 龍ONE
  * Date Created: February 4, 2019
- * Date Edited: July 7, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 33
  */
 
 /**
- * This class contains a method that calculates the product of anomalous
+ * This class contains method(s) that calculates the product of anomalous
  * cancelling proper fractions (curious fractions) that contains n digits in the
  * numerator and denominator. The main method executes the program.
  */

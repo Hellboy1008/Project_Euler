@@ -2,14 +2,14 @@
 /**
  * Created by: 龍ONE
  * Date Created: February 3, 2019
- * Date Edited: July 7, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 32
  */
 
 import java.util.ArrayList;
 
 /**
- * This class contains a method that calculates the sum of all products whose
+ * This class contains method(s) that calculates the sum of all products whose
  * multiplicand/multiplier/product identity can be written as a 1 through 9
  * pandigital. The main method executes the program.
  */

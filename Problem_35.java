@@ -7,7 +7,7 @@
  */
 
 /**
- * This class contains a method that finds all circular primes below a number n.
+ * This class contains method(s) that finds all circular primes below a number n.
  * The main method executes the program.
  */
 public class Problem_35 {

@@ -2,12 +2,12 @@
 /**
  * Created by: 龍ONE 
  * Date Created: December 22, 2018
- * Date Edited: July 5, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 16
  */
 
 /**
- * This class contains a method that calculates the sum of the digits of a number n
+ * This class contains method(s) that calculates the sum of the digits of a number n
  * raised to another number m. The main method executes the program.
  */
 

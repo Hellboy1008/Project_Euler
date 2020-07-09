@@ -2,12 +2,12 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Jan 19, 2018
- * Date Edited: July 5, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 9
  */
 
 /**
- * This class contains a method that calculates the product of the pythagorean
+ * This class contains method(s) that calculates the product of the pythagorean
  * triplet with the sum 1000. The main method executes the program.
  */
 public class Problem_09 {

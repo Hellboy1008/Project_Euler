@@ -2,14 +2,14 @@
 /**
  * Created by: 龍ONE 
  * Date Created: January 15, 2019
- * Date Edited: July 5, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 20
  */
 
 import java.math.BigInteger;
 
 /**
- * This class contains a method that finds the sum of the digits for a factorial
+ * This class contains method(s) that finds the sum of the digits for a factorial
  * of a number n. The main method executes the program.
  */
 public class Problem_20 {

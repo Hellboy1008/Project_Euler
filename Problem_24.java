@@ -2,14 +2,14 @@
 /**
  * Created by: 龍ONE 
  * Date Created: January 30, 2019
- * Date Edited: July 5, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 24
  */
 
 import java.util.ArrayList;
 
 /**
- * This class contains a method that calculates nth lexicographic permutation of
+ * This class contains method(s) that calculates nth lexicographic permutation of
  * the digits 0 through 9. The main method executes the program.
  */
 public class Problem_24 {

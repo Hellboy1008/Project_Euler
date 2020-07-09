@@ -2,12 +2,12 @@
 /**
  * Created by: 龍ONE 
  * Date Created: January 31, 2019
- * Date Edited: July 5, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 28
  */
 
 /**
- * This class contains a method that calculates sum of the numbers on the
+ * This class contains method(s) that calculates sum of the numbers on the
  * diagonals in a n x n spiral. The main method executes the program.
  */
 public class Problem_28 {

@@ -2,12 +2,12 @@
 /**
  * Created by: 龍ONE
  * Date Created: February 1, 2019
- * Date Edited: July 5, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 30
  */
 
 /**
- * This class contains a method that find the sum of all the numbers that can be
+ * This class contains method(s) that find the sum of all the numbers that can be
  * written as the sum of the nth powers of their digits. The main method
  * executes the program.
  */

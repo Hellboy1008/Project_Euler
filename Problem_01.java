@@ -2,12 +2,12 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Oct 12, 2017
- * Date Edited: July 2, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 1
  */
 
 /**
- * This class contains a method that calculates the sum of all the multiples of
+ * This class contains method(s) that calculates the sum of all the multiples of
  * 3 and 5 below a number n. The main method executes the program.
  */
 public class Problem_01 {

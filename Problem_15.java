@@ -2,12 +2,12 @@
 /**
  * Created by: 龍ONE 
  * Date Created: December 22, 2018
- * Date Edited: July 5, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 15
  */
 
 /**
- * This class contains a method that calculates the number of possible routes in
+ * This class contains method(s) that calculates the number of possible routes in
  * a n by n square grid. The main method executes the program.
  */
 public class Problem_15 {

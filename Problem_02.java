@@ -2,12 +2,12 @@
 /**
  * Created by: 龍ONE 
  * Date Created: Oct 12, 2017
- * Date Edited: July 2, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 2
  */
 
 /**
- * This class contains a method that calculates the sum of a even fibonacci
+ * This class contains method(s) that calculates the sum of a even fibonacci
  * numbers below a limit n. The main method executes the program.
  */
 public class Problem_02 {

@@ -2,12 +2,12 @@
 /**
  * Created by: 龍ONE 
  * Date Created: December 25, 2018
- * Date Edited: July 5, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 17
  */
 
 /**
- * This class contains a method that calculates the number of letters used to
+ * This class contains method(s) that calculates the number of letters used to
  * write out the numbers 1 to 1000 (inclusive) in words. The main method
  * executes the program.
  */

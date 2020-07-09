@@ -2,14 +2,14 @@
 /**
  * Created by: 龍ONE 
  * Date Created: January 31, 2019
- * Date Edited: July 5, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 27
  */
 
 import java.util.ArrayList;
 
 /**
- * This class contains a method that calculates the product of the coefficients
+ * This class contains method(s) that calculates the product of the coefficients
  * a and b, where |a| < l and |b| <= l for the quadratic expression n^2 + an + b
  * that produces the maximum number of primes for consecutive values of n,
  * starting with n = 0. The main method executes the program.

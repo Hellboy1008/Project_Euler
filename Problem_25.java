@@ -2,14 +2,14 @@
 /**
  * Created by: 龍ONE 
  * Date Created: January 30, 2019
- * Date Edited: July 5, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 25
  */
 
 import java.math.BigInteger;
 
 /**
- * This class contains a method that calculates the index of the first term in
+ * This class contains method(s) that calculates the index of the first term in
  * the Fibonacci sequence to contain n digits. The main method executes the
  * program.
  */

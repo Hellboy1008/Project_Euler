@@ -2,12 +2,12 @@
 /**
  * Created by: 龍ONE
  * Date Created: February 1, 2019
- * Date Edited: July 7, 2020
+ * Date Edited: July 9, 2020
  * Purpose: Solution to Project Euler Problem 31
  */
 
 /**
- * This class contains a method that calculates the number of ways n pounds can
+ * This class contains method(s) that calculates the number of ways n pounds can
  * be made using any number of coins in the UK currency. The main method
  * executes the program.
  */
